@@ -15,6 +15,11 @@ import {
   AgmCoreModule
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { AdminComponent } from './user/admin/admin.component';
+import { ClientComponent } from './client/client.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 @NgModule({
   imports: [
@@ -32,6 +37,11 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    AdminComponent,
+    ClientComponent,
+    LoginComponent,
+    DashboardComponent,
+   
 
   ],
   providers: [],

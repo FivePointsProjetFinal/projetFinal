@@ -4,6 +4,8 @@ import { Routes } from '@angular/router';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
 
 import { NotificationsComponent } from '../../notifications/notifications.component';
+import { AddUserComponent } from 'app/user/add-user/add-user.component';
+import { DashboardComponent } from 'app/dashboard/dashboard.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -51,7 +53,8 @@ export const AdminLayoutRoutes: Routes = [
     // }
   
     { path: 'user-profile',   component: UserProfileComponent },
-   
+    { path: 'dashboard',      component: DashboardComponent },
     { path: 'notifications',  component: NotificationsComponent },
+    { path: 'ajoute',  component: AddUserComponent }
 
 ];
