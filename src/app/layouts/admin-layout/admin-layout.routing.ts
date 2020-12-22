@@ -7,6 +7,10 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { AddUserComponent } from 'app/user/add-user/add-user.component';
 import { DashboardComponent } from 'app/dashboard/dashboard.component';
 
+import { ListFComponent } from 'app/fournisseurs/list-f/list-f.component';
+import { ListProduitComponent } from 'app/produit/list-produit/list-produit.component';
+import { ListClientComponent } from 'app/client/list-client/list-client.component';
+
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -55,6 +59,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'notifications',  component: NotificationsComponent },
-    { path: 'ajoute',  component: AddUserComponent }
+     { path: 'client',  component: ListClientComponent },
+    { path: 'fournisseur',  component: ListFComponent },
+    { path: 'produit',  component: ListProduitComponent }
 
 ];
