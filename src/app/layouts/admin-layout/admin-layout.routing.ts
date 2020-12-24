@@ -61,6 +61,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'notifications',  component: NotificationsComponent },
      { path: 'client',  component: ListClientComponent },
     { path: 'fournisseur',  component: ListFComponent },
-    { path: 'produit',  component: ListProduitComponent }
+    { path: 'produit',  component: ListProduitComponent },
+    { path: 'user',  component: AddUserComponent }
 
 ];

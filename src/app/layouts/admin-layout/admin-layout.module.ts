@@ -3,9 +3,9 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
-
+import {MatTabsModule} from '@angular/material/tabs';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
-
+import {MatDialogModule} from '@angular/material/dialog';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 
 import {MatButtonModule} from '@angular/material/button';
@@ -15,6 +15,17 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { AddUserComponent } from 'app/user/add-user/add-user.component';
+import { ListClientComponent } from 'app/client/list-client/list-client.component';
+import { AddProduitComponent } from 'app/produit/add-produit/add-produit.component';
+import { DashboardComponent } from 'app/dashboard/dashboard.component';
+import { AddClientComponent } from 'app/client/add-client/add-client.component';
+import { AddFComponent } from 'app/fournisseurs/add-f/add-f.component';
+import { ListFComponent } from 'app/fournisseurs/list-f/list-f.component';
+import { UpdateFComponent } from 'app/fournisseurs/update-f/update-f.component';
+import { ListProduitComponent } from 'app/produit/list-produit/list-produit.component';
+import { UpdateProduitComponent } from 'app/produit/update-produit/update-produit.component';
+import { UpdateClientComponent } from 'app/client/update-client/update-client.component';
+
 
 @NgModule({
   imports: [
@@ -28,11 +39,24 @@ import { AddUserComponent } from 'app/user/add-user/add-user.component';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatTabsModule,
+    MatDialogModule,
+    
   ],
   declarations: [
     UserProfileComponent,
     NotificationsComponent,
-    AddUserComponent
+    AddUserComponent,
+    ListClientComponent,
+    AddProduitComponent,
+    DashboardComponent,
+    AddClientComponent, 
+    AddFComponent,
+    ListFComponent,
+    UpdateFComponent,
+    ListProduitComponent,
+    UpdateProduitComponent,
+    UpdateClientComponent,
   ]
 })
 
