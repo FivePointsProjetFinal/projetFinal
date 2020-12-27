@@ -25,7 +25,9 @@ import { UpdateFComponent } from 'app/fournisseurs/update-f/update-f.component';
 import { ListProduitComponent } from 'app/produit/list-produit/list-produit.component';
 import { UpdateProduitComponent } from 'app/produit/update-produit/update-produit.component';
 import { UpdateClientComponent } from 'app/client/update-client/update-client.component';
-
+import {MatTableModule} from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import {MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   imports: [
@@ -41,6 +43,9 @@ import { UpdateClientComponent } from 'app/client/update-client/update-client.co
     MatTooltipModule,
     MatTabsModule,
     MatDialogModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
     
   ],
   declarations: [

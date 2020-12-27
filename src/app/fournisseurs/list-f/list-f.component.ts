@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddClientComponent } from 'app/client/add-client/add-client.component';
+import { ClientServiceService } from 'app/service/client-service.service';
 
 @Component({
   selector: 'app-list-f',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListFComponent implements OnInit {
 
-  constructor() { }
+  clients;
 
-  ngOnInit(): void {
+  constructor(public dialog: MatDialog ,private ClientServices: ClientServiceService) { }
+  
+  openDialog() {
+    const dialogRef = this.dialog.open(AddClientComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
+ 
+  ngOnInit(): void {
+    // this.clients=this.ClientServices.listClient();
+  }
+  deletClient(id){
+    this.ClientServices.deleteClient(id) ;
+       location.reload();
+    }
 
 }
