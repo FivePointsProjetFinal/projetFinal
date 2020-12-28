@@ -25,7 +25,7 @@ export class AddClientComponent implements OnInit {
       modepaimentClient: new FormControl('', [Validators.required]), 
       villeClient : new FormControl('', [Validators.required]),
       typeClient : new FormControl('', [Validators.required]),
-      favorisClient: new FormControl(),
+      favorisClient: new FormControl(false),
       refClient: new FormControl('', [Validators.required]),
       
 

@@ -23,6 +23,7 @@ import { AffichClientComponent } from './client/affich-client/affich-client.comp
 
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -44,6 +45,8 @@ import { AffichClientComponent } from './client/affich-client/affich-client.comp
     LoginComponent,
  
     AffichClientComponent,
+ 
+  
    
  
    

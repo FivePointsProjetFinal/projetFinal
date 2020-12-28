@@ -3,10 +3,11 @@ import {MatDialog} from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { ClientServiceService } from 'app/service/client-service.service';
 import { AddClientComponent } from '../add-client/add-client.component';
 import { AffichClientComponent } from '../affich-client/affich-client.component';
+import { FavClientComponent } from '../fav-client/fav-client.component';
 import { UpdateClientComponent } from '../update-client/update-client.component';
 
 
@@ -24,7 +25,8 @@ export interface Owner{
 })
 export class ListClientComponent implements OnInit , AfterViewInit{
 
-public displayedColumns = ['name', 'telephone','email', 'address', 'details', 'update', 'delete'];
+
+public displayedColumns = ['ref-client','name', 'telephone','email', 'address', 'details', 'update', 'delete','favoris'];
   public dataSource = new MatTableDataSource<Owner>();
 
   @ViewChild(MatSort) sort: MatSort;
@@ -39,14 +41,14 @@ public displayedColumns = ['name', 'telephone','email', 'address', 'details', 'u
       console.log(`Dialog result: ${result}`);
     });
   }
-  // openDialog2(id) {
-  //   const dialogRef = this.dialog.open(AffichClientComponent,id);
+  openDialog2() {
+    const dialogRef = this.dialog.open(FavClientComponent);
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log(`Dialog result: ${result}`);
-  //   });
-  // }
   openModal(id): void {
     const dialogRef = this.dialog.open(AffichClientComponent, {
       data :{'id':id}
@@ -83,15 +85,14 @@ openModalUpdate(id): void {
     })
     
   }
-  redirectToDetails (id) {
-    
+  favoris(id){
+    this.ClientServices.favoris(id);
+    location.reload();
   }
-  redirectToUpdate (id) {
-    
-  }
+
  redirectToDelete  (id) {
   this.ClientServices.deleteClient(id);
-  console.log("ok1");
+  location.reload();
   
   }
 

@@ -24,9 +24,9 @@ export class ClientServiceService {
       (msg) => console.log(msg),
       (error) => console.log(error)
     );
-     location.reload();
+ 
   }
-  getEtablibyid(id){
+  getClientbyid(id){
     const user= this.httpClient.get(this.baseUrl+'users/getClientById/'+id);
     return user;
   }
@@ -35,7 +35,15 @@ export class ClientServiceService {
       (msg) => console.log(msg),
       (error) => console.log(error)
     );;
-    console.log("ok");
-    
+  }
+  favoris(id){
+    this.httpClient.put(this.baseUrl+'users/updateFav/'+id,"").subscribe(
+      (msg) => console.log(msg),
+      (error) => console.log(error)
+    );
+  }
+  getFavClient(){
+    const client= this.httpClient.get(this.baseUrl+'users/getFavoritClient');
+    return client;
   }
 }

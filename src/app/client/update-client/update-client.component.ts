@@ -36,7 +36,7 @@ export class UpdateClientComponent implements OnInit {
     });
 
     
-   this.ClientServices.getEtablibyid( this.data.id).subscribe((response:any) => {
+   this.ClientServices.getClientbyid( this.data.id).subscribe((response:any) => {
       this.clientForm.patchValue(response.user);        
    });
   }

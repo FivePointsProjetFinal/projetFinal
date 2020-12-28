@@ -1,7 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { AddClientComponent } from 'app/client/add-client/add-client.component';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import {  Router } from '@angular/router';
 import { ClientServiceService } from 'app/service/client-service.service';
+import { FournisseurServiceService } from 'app/service/fournisseur-service.service';
+import { AddFComponent } from '../add-f/add-f.component';
+import { AffichFComponent } from '../affich-f/affich-f.component';
+import { UpdateFComponent } from '../update-f/update-f.component';
+
+
+
+export interface Owner{
+  nameFournisseur : String,
+  adresseFournisseur :String,
+  emailFournisseur : String,
+  telpFournisseur:String
+}
 
 @Component({
   selector: 'app-list-f',
@@ -10,24 +26,75 @@ import { ClientServiceService } from 'app/service/client-service.service';
 })
 export class ListFComponent implements OnInit {
 
-  clients;
-
-  constructor(public dialog: MatDialog ,private ClientServices: ClientServiceService) { }
   
-  openDialog() {
-    const dialogRef = this.dialog.open(AddClientComponent);
+public displayedColumns = ['name', 'telephone','email', 'address', 'details', 'update', 'delete','favoris'];
+public dataSource = new MatTableDataSource<Owner>();
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
- 
-  ngOnInit(): void {
-    // this.clients=this.ClientServices.listClient();
-  }
-  deletClient(id){
-    this.ClientServices.deleteClient(id) ;
-       location.reload();
-    }
+@ViewChild(MatSort) sort: MatSort;
+@ViewChild(MatPaginator) paginator: MatPaginator;
 
+constructor(private router: Router, public dialog: MatDialog ,private FournisseurServices: FournisseurServiceService) { }
+
+openDialog() {
+  const dialogRef = this.dialog.open(AddFComponent);
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log(`Dialog result: ${result}`);
+  });
+}
+
+openModal(id): void {
+  const dialogRef = this.dialog.open(AffichFComponent, {
+    data :{'id':id}
+});
+  dialogRef.afterClosed().subscribe((result:string) => {
+      this.router.navigate(['AffichFComponent',id]);
+
+      console.log('The dialog was closed');
+      console.log(result);
+  });
+}
+
+openModalUpdate(id): void {
+const dialogRef = this.dialog.open(UpdateFComponent, {
+  data :{'id':id}
+});
+dialogRef.afterClosed().subscribe((result:string) => {
+    this.router.navigate(['UpdateFComponent',id]);
+
+    console.log('The dialog was closed');
+    console.log(result);
+});
+}
+
+ngOnInit(): void {
+  this.getAllOwners();
+
+}
+
+ getAllOwners () {
+  this.FournisseurServices.getFournisseur().subscribe((response:any) => {
+     this.dataSource.data = response.fournisseur as Owner[];
+  })
+  
+}
+
+favoris(id){
+  this.FournisseurServices.favoris(id);
+  // location.reload();
+}
+
+redirectToDelete  (id) {
+this.FournisseurServices.deleteFournisseur(id);
+console.log("ok1");
+
+}
+
+ngAfterViewInit(): void {
+  this.dataSource.sort = this.sort;
+  this.dataSource.paginator = this.paginator;
+}
+public doFilter = (value: string) => {
+  this.dataSource.filter = value.trim().toLocaleLowerCase();
+}
 }

@@ -28,6 +28,8 @@ import { UpdateClientComponent } from 'app/client/update-client/update-client.co
 import {MatTableModule} from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import {MatPaginatorModule } from '@angular/material/paginator';
+import { FavClientComponent } from 'app/client/fav-client/fav-client.component';
+import { AffichFComponent } from 'app/fournisseurs/affich-f/affich-f.component';
 
 @NgModule({
   imports: [
@@ -62,6 +64,9 @@ import {MatPaginatorModule } from '@angular/material/paginator';
     ListProduitComponent,
     UpdateProduitComponent,
     UpdateClientComponent,
+    AffichFComponent,
+ 
+    FavClientComponent,
   ]
 })
 

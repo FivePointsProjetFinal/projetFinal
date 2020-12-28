@@ -97,8 +97,9 @@
                                     <mat-label>mode de paiement</mat-label>
                                     <mat-select formControlName="modepaimentClient">
                                       <mat-option value="ESPECE"> ESPECE</mat-option>
-                                      <mat-option value="CHEK">CHEK</mat-option>
-                                      <mat-option value="VERMENT">VERMENT</mat-option>
+                                      <mat-option value="CHEK">CHEQUE</mat-option>
+                                      <mat-option value="CHEK">CREDIT</mat-option>
+                                      <mat-option value="VERMENT">VIRMENT</mat-option>
                                       <mat-option value="CARTE BANCAIRE">CARTE BANCAIRE</mat-option>
                                     </mat-select>
                                     <mat-error *ngIf="clientForm.controls.modepaimentClient.hasError('required')">
