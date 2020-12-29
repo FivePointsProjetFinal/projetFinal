@@ -10,7 +10,7 @@ export class ProduitServiceService {
   constructor(private  httpClient: HttpClient) { }
 
   addProduit(cl){
-    this.httpClient.post<any>(this.baseUrl+'users/addUser',cl).subscribe(
+    this.httpClient.post<any>(this.baseUrl+'produits/addProduit',cl).subscribe(
       (msg) => console.log(msg),
       (error) => console.log(error)
     );

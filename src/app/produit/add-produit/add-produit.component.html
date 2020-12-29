@@ -1,120 +1,77 @@
+<div class="card">
+  <div class="card-header card-header-danger row ">
+    <div class="col-6">
+      <h4 class="card-title mt-0"> Ajout de Produit </h4>
+    </div>
+  </div>
+  <div class="card-body">
+    <form class="example-form" [formGroup]="ProduitForm">
+      <div class="row">
+        <div class="col-md-5">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Produit Id" disabled>
+          </mat-form-field>
+        </div>
+        <div class="col-md-7">
+          <mat-form-field class="example-full-width">
+            <input matInput formControlName="nameProduit" placeholder="Produit Name">
+            <mat-error *ngIf="ProduitForm.controls.nameProduit.hasError('required')">
+              Produit Name is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field class="example-full-width">
+            <input matInput formControlName="qteProduit" placeholder=" Quantite Produit">
+            <mat-error *ngIf="ProduitForm.controls.qteProduit.hasError('required')">
+              Produit Quantite is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field class="example-full-width">
+            <input matInput formControlName="prixDachat" placeholder="Prix D'achat" type="text">
+            <mat-error *ngIf="ProduitForm.controls.prixDachat.hasError('required')">
+              Produit Prix D'achat is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
 
-                
-                    <div class="card">
-                        <div class="card-header card-header-danger row ">
-                            <div class="col-6">
-                                <h4 class="card-title mt-0"> Ajout de client </h4>
-                            </div>
-                        </div>
-                      <div class="card-body">
-                          <form class="example-form" [formGroup]="ProduitForm">
-                              <div class="row">
-                                  <div class="col-md-5">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput  placeholder="Client Id" disabled>
-                                      </mat-form-field>
-                                  </div>
-                                  <div class="col-md-7">
-                                      <mat-form-field class="example-full-width">
-                                        <input matInput formControlName="nameClient" placeholder="Client Name">
-                                        <mat-error *ngIf="clientForm.controls.nameClient.hasError('required')">
-                                          Client Name is required.
-                                        </mat-error>
-                                      </mat-form-field>
-                                  </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput formControlName="refClient" placeholder=" Ref client">
-                                    <mat-error *ngIf="clientForm.controls.refClient.hasError('required')">
-                                      Ref client is required.
-                                    </mat-error>
-                                  </mat-form-field>
-                              </div>
-                                <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput formControlName="telpClient" placeholder="Telephone" type="text">
-                                    <mat-error *ngIf="clientForm.controls.telpClient.hasError('required')">
-                                      Telephone client is required.
-                                    </mat-error>
-                                  </mat-form-field>
-                                </div>
-                               
-                                <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput formControlName="faxClient" placeholder="Fax" type="text">
-                                    <mat-error *ngIf="clientForm.controls.faxClient.hasError('required')">
-                                      Fax client is required.
-                                    </mat-error>
-                                  </mat-form-field>
-                                </div>
-                            </div>
-                       
-                              <div class="row">
-                                <div class="col-md-8">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput formControlName="adresseClient" placeholder="Address client" type="text">
-                                    <mat-error *ngIf="clientForm.controls.adresseClient.hasError('required')">
-                                      Address client is required.
-                                    </mat-error>
-                                  </mat-form-field>
-                                </div>
-                                  <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                      <input matInput formControlName="villeClient" placeholder="Ville" type="text">
-                                      <mat-error *ngIf="clientForm.controls.villeClient.hasError('required')">
-                                        Ville client is required.
-                                      </mat-error>
-                                    </mat-form-field>
-                                  </div>
-                               
-                            </div>
-                              <div class="row">
-                                  <div class="col-md-10">
-                                    <mat-form-field class="example-full-width">
-                                      <input matInput formControlName="emailClient" placeholder="Email" type="text">
-                                      <mat-error *ngIf="clientForm.controls.emailClient.hasError('required')">
-                                        Email client is required.
-                                      </mat-error>
-                                      <mat-error *ngIf="clientForm.controls.emailClient.hasError('email')">
-                                        Email client not valid.
-                                      </mat-error>
-                                    </mat-form-field>
-                                  </div>
-                                </div>  
-                                <div class="row">
-                                  <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                      <input matInput formControlName="typeClient" placeholder="type client" type="text">
-                                      <mat-error *ngIf="clientForm.controls.typeClient.hasError('required')">
-                                        type client is required.
-                                      </mat-error>
-                                    </mat-form-field>
-                                  </div>
-                                  <div class="col-md-4">
-                                    <mat-form-field appearance="fill">
-                                      <mat-label>mode de paiement</mat-label>
-                                      <mat-select formControlName="modepaimentClient">
-                                        <mat-option value="ESPECE"> ESPECE</mat-option>
-                                        <mat-option value="CHEK">CHEK</mat-option>
-                                        <mat-option value="VERMENT">VERMENT</mat-option>
-                                        <mat-option value="CARTE BANCAIRE">CARTE BANCAIRE</mat-option>
-                                      </mat-select>
-                                      <mat-error *ngIf="clientForm.controls.modepaimentClient.hasError('required')">
-                                        mode paiement client is required.
-                                      </mat-error>
-                                      <mat-hint align="end" >Here's the dropdown arrow ^</mat-hint>
-                                    </mat-form-field>
-                                  </div>
-                                  
-                              </div>
-                              <button mat-raised-button (click)="submitClient()" [mat-dialog-close] class="btn btn-danger pull-right">  <span class="material-icons">
-                                add_task
-                                </span> Ajouter client</button>
-                              <div class="clearfix"></div>
-                            
-                          </form>
-                      </div>
-                </div>
+        <div class="col-md-4">
+          <mat-form-field class="example-full-width">
+            <input matInput formControlName="prixVente" placeholder="Prix de vente" type="text">
+            <mat-error *ngIf="ProduitForm.controls.prixVente.hasError('required')">
+              Produit prix de Vente is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="fill">
+            <mat-label>Fournisseur</mat-label>
+            <mat-select formControlName="idFournisseur">
+              <mat-option *ngFor="let fourni of fournis" [value]="fourni._id">
+                {{fourni.nameFournisseur}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="ProduitForm.controls.idFournisseur.hasError('required')">
+              Produit Fournisseur is required.
+            </mat-error>
+            <mat-hint align="end">Fournisseur</mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+      <button mat-raised-button (click)="submitProduit()" [mat-dialog-close] class="btn btn-danger pull-right"> <span
+        class="material-icons">
+        add_task
+      </span> Ajouter Produit</button>
+
+    </form>
+  </div>
+
   
+</div>

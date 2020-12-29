@@ -19,6 +19,8 @@ import { AdminComponent } from './user/admin/admin.component';
 
 import { LoginComponent } from './login/login.component';
 import { AffichClientComponent } from './client/affich-client/affich-client.component';
+import { CategorieComponent } from './produit/categorie/categorie.component';
+
 
 
 
@@ -41,16 +43,9 @@ import { AffichClientComponent } from './client/affich-client/affich-client.comp
     AppComponent,
     AdminLayoutComponent,
     AdminComponent,
- 
     LoginComponent,
- 
     AffichClientComponent,
- 
-  
-   
- 
-   
-
+    CategorieComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

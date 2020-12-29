@@ -65,7 +65,6 @@ import { AffichFComponent } from 'app/fournisseurs/affich-f/affich-f.component';
     UpdateProduitComponent,
     UpdateClientComponent,
     AffichFComponent,
- 
     FavClientComponent,
   ]
 })
