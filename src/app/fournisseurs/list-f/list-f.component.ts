@@ -27,7 +27,7 @@ export interface Owner{
 export class ListFComponent implements OnInit {
 
   
-public displayedColumns = ['name', 'telephone','email', 'address', 'details', 'update', 'delete','favoris'];
+public displayedColumns = ['ref_f','name', 'telephone','email', 'address', 'details', 'update', 'delete','favoris'];
 public dataSource = new MatTableDataSource<Owner>();
 
 @ViewChild(MatSort) sort: MatSort;
@@ -81,7 +81,7 @@ ngOnInit(): void {
 
 favoris(id){
   this.FournisseurServices.favoris(id);
-  // location.reload();
+   location.reload();
 }
 
 redirectToDelete  (id) {

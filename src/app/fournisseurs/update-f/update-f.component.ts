@@ -33,7 +33,7 @@ export class UpdateFComponent implements OnInit {
       refFournisseur: new FormControl('', [Validators.required]),
     });
     this.FournisseurServices.getFournisseurbyid( this.data.id).subscribe((response:any) => {
-      this.FournisseurForm.patchValue(response.user);        
+      this.FournisseurForm.patchValue(response.fournisseur);        
    });
   }
 

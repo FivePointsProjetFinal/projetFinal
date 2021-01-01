@@ -30,6 +30,12 @@ import { MatSortModule } from '@angular/material/sort';
 import {MatPaginatorModule } from '@angular/material/paginator';
 import { FavClientComponent } from 'app/client/fav-client/fav-client.component';
 import { AffichFComponent } from 'app/fournisseurs/affich-f/affich-f.component';
+import { CategorieComponent } from 'app/produit/categorie/categorie.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { FavFComponent } from 'app/fournisseurs/fav-f/fav-f.component';
+import { PackComponent } from 'app/produit/pack/pack.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   imports: [
@@ -47,8 +53,10 @@ import { AffichFComponent } from 'app/fournisseurs/affich-f/affich-f.component';
     MatDialogModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
-    
+    MatPaginatorModule,
+    MatExpansionModule,
+    MatAutocompleteModule,
+    MatChipsModule
   ],
   declarations: [
     UserProfileComponent,
@@ -66,6 +74,10 @@ import { AffichFComponent } from 'app/fournisseurs/affich-f/affich-f.component';
     UpdateClientComponent,
     AffichFComponent,
     FavClientComponent,
+    CategorieComponent,
+    FavFComponent,
+    PackComponent
+
   ]
 })
 

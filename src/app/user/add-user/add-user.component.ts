@@ -12,15 +12,17 @@ export class AddUserComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.userForm= new FormGroup({
-      ID: new FormControl('',Validators.required),
-      first_name:new FormControl('',Validators.required),
-      last_name: new FormControl('',Validators.required),
-      email: new FormControl('',Validators.required),
-      password: new FormControl('',Validators.required)
-    })
+    this.userForm = new FormGroup({ 
+      firstName  :new FormControl('', [Validators.required]),
+      lastName :new FormControl('', [Validators.required]),
+      telp :new FormControl('', [Validators.required]),
+      adresse :new FormControl('', [Validators.required]),
+      email  :new FormControl('', [Validators.required]),
+      password  :new FormControl('', [Validators.required]),
+      roleUser :new FormControl('', [Validators.required]),
+    });
   }
-  submitForm() {
+  submitUser() {
     this.submitted=true;
     if (this.userForm.invalid) {
       return ;  

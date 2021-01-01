@@ -11,7 +11,10 @@ export class ClientServiceService {
 
   addClient(cl){
     this.httpClient.post<any>(this.baseUrl+'users/addUser',cl).subscribe(
-      (msg) => console.log(msg),
+      (msg) => {
+        console.log(msg),
+        location.reload()
+      },
       (error) => console.log(error)
     );
   }
@@ -32,13 +35,19 @@ export class ClientServiceService {
   }
   updateClient(id,client){
     this.httpClient.put(this.baseUrl+'users/updateUser/'+id,client).subscribe(
-      (msg) => console.log(msg),
+      (msg) => {
+        console.log(msg),
+        location.reload()
+      },
       (error) => console.log(error)
-    );;
+    );
   }
   favoris(id){
     this.httpClient.put(this.baseUrl+'users/updateFav/'+id,"").subscribe(
-      (msg) => console.log(msg),
+      (msg) => {
+        console.log(msg),
+        location.reload()
+      },
       (error) => console.log(error)
     );
   }
