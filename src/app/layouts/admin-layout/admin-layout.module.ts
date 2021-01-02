@@ -36,6 +36,7 @@ import { FavFComponent } from 'app/fournisseurs/fav-f/fav-f.component';
 import { PackComponent } from 'app/produit/pack/pack.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -56,7 +57,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatPaginatorModule,
     MatExpansionModule,
     MatAutocompleteModule,
-    MatChipsModule
+    MatChipsModule,
+    MatIconModule
   ],
   declarations: [
     UserProfileComponent,

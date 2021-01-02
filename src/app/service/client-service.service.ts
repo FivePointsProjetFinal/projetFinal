@@ -10,7 +10,7 @@ export class ClientServiceService {
   constructor(private  httpClient: HttpClient) { }
 
   addClient(cl){
-    this.httpClient.post<any>(this.baseUrl+'users/addUser',cl).subscribe(
+    this.httpClient.post<any>(this.baseUrl+'clients/addClient',cl).subscribe(
       (msg) => {
         console.log(msg),
         location.reload()
@@ -19,22 +19,23 @@ export class ClientServiceService {
     );
   }
   getClient(){
-    const user= this.httpClient.get(this.baseUrl+'users/allUsers');
+    const user= this.httpClient.get(this.baseUrl+'clients/allClients');
     return user;
   }
   deleteClient(id){
-    this.httpClient.delete(this.baseUrl+'users/deletUser/'+id).subscribe(
+
+    this.httpClient.delete(this.baseUrl+'clients/deletClient/'+id).subscribe(
       (msg) => console.log(msg),
       (error) => console.log(error)
     );
  
   }
   getClientbyid(id){
-    const user= this.httpClient.get(this.baseUrl+'users/getClientById/'+id);
+    const user= this.httpClient.get(this.baseUrl+'clients/getClientById/'+id);
     return user;
   }
   updateClient(id,client){
-    this.httpClient.put(this.baseUrl+'users/updateUser/'+id,client).subscribe(
+    this.httpClient.put(this.baseUrl+'clients/updateClient/'+id,client).subscribe(
       (msg) => {
         console.log(msg),
         location.reload()
@@ -43,7 +44,7 @@ export class ClientServiceService {
     );
   }
   favoris(id){
-    this.httpClient.put(this.baseUrl+'users/updateFav/'+id,"").subscribe(
+    this.httpClient.put(this.baseUrl+'clients/updateFav/'+id,"").subscribe(
       (msg) => {
         console.log(msg),
         location.reload()
@@ -52,7 +53,7 @@ export class ClientServiceService {
     );
   }
   getFavClient(){
-    const client= this.httpClient.get(this.baseUrl+'users/getFavoritClient');
+    const client= this.httpClient.get(this.baseUrl+'clients/getFavoritClient');
     return client;
   }
 }

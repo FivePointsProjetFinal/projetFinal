@@ -19,7 +19,7 @@
 
         <div class="col-md-4">
             <mat-form-field class="example-chip-list">
-                <mat-label>Favorite Fruits</mat-label>
+                <mat-label> Produits</mat-label>
                 <mat-chip-list #chipList aria-label="Produit selection">
                     <mat-chip *ngFor="let prod of TabProduit" [selectable]="selectable" [removable]="removable"
                         (removed)="remove(prod)">

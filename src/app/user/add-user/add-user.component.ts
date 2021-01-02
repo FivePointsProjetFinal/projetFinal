@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthServiceService } from 'app/service/auth-service.service';
 
 @Component({
   selector: 'app-add-user',
@@ -9,7 +10,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AddUserComponent implements OnInit {
   submitted=false;
   userForm;
-  constructor() { }
+  hide = true;
+  constructor(private authServices: AuthServiceService) { }
 
   ngOnInit(): void {
     this.userForm = new FormGroup({ 
@@ -22,13 +24,15 @@ export class AddUserComponent implements OnInit {
       roleUser :new FormControl('', [Validators.required]),
     });
   }
-  submitUser() {
-    this.submitted=true;
+
+  save(){
+   this.submitted=true;
     if (this.userForm.invalid) {
       return ;  
     }
   
-    // this.adminService.addUser(this.userForm.value);
-    //  this.router.navigateByUrl('/admin')
+    console.log('ok');
+    this.authServices.addUser(this.userForm.value);
+    
   }
 }
