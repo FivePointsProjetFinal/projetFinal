@@ -18,8 +18,9 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AdminComponent } from './user/admin/admin.component';
 
 import { LoginComponent } from './login/login.component';
-import { AffichClientComponent } from './client/affich-client/affich-client.component';
-import { AffichProduitComponent } from './produit/affich-produit/affich-produit.component';
+import { AffichCommandeComponent } from './commande/affich-commande/affich-commande.component';
+
+
 
 
 
@@ -46,8 +47,8 @@ import { AffichProduitComponent } from './produit/affich-produit/affich-produit.
     AdminLayoutComponent,
     AdminComponent,
     LoginComponent,
-    AffichClientComponent,
-    AffichProduitComponent,
+    AffichCommandeComponent,
+    
 
   
   ],

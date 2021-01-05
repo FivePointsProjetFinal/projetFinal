@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -7,7 +7,6 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NotificationsComponent } from '../../notifications/notifications.component';
-
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatRippleModule} from '@angular/material/core';
@@ -37,6 +36,13 @@ import { PackComponent } from 'app/produit/pack/pack.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
+import { AffichProduitComponent } from 'app/produit/affich-produit/affich-produit.component';
+import { AffichClientComponent } from 'app/client/affich-client/affich-client.component';
+import { ListCommandeComponent } from 'app/commande/list-commande/list-commande.component';
+import { AddCommandeComponent } from 'app/commande/add-commande/add-commande.component';
+import { UpdateCommandeComponent } from 'app/commande/update-commande/update-commande.component';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+
 
 @NgModule({
   imports: [
@@ -58,7 +64,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatExpansionModule,
     MatAutocompleteModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    NgxMatSelectSearchModule
   ],
   declarations: [
     UserProfileComponent,
@@ -78,9 +85,15 @@ import {MatIconModule} from '@angular/material/icon';
     FavClientComponent,
     CategorieComponent,
     FavFComponent,
-    PackComponent
+    PackComponent,
+    AffichClientComponent,
+    AffichProduitComponent,
+    ListCommandeComponent,
+    AddCommandeComponent,
+    UpdateCommandeComponent,
 
-  ]
+  ],
+  schemas: [ NO_ERRORS_SCHEMA ],
 })
 
 export class AdminLayoutModule {}

@@ -12,6 +12,9 @@ import { ListProduitComponent } from 'app/produit/list-produit/list-produit.comp
 import { ListClientComponent } from 'app/client/list-client/list-client.component';
 import { UpdateClientComponent } from 'app/client/update-client/update-client.component';
 import { AffichClientComponent } from 'app/client/affich-client/affich-client.component';
+import { ListCommandeComponent } from 'app/commande/list-commande/list-commande.component';
+import { AddCommandeComponent } from 'app/commande/add-commande/add-commande.component';
+import { AffichCommandeComponent } from 'app/commande/affich-commande/affich-commande.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -58,29 +61,25 @@ export const AdminLayoutRoutes: Routes = [
     //     }]
     // }
   
-    { path: 'user-profile',   component: UserProfileComponent },
+     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'dashboard',      component: DashboardComponent },
-    { path: 'notifications',  component: NotificationsComponent },
+     { path: 'notifications',  component: NotificationsComponent },
 
-     { path: 'client', 
+     { path: 'commande', 
       children: [
         {
            path: '',
-           component: ListClientComponent
+           component: AddCommandeComponent
            }
            , {
-            path: 'update/:id',
-           component: UpdateClientComponent
-           },
-           {
-            path: 'affich/:id',
-           component: AffichClientComponent
+            path: 'detail/:id',
+           component: AffichCommandeComponent
            }] },
 
 
 
     { path: 'fournisseur',  component: ListFComponent },
     { path: 'produit',  component: ListProduitComponent },
-    { path: 'user',  component: AddUserComponent }
-
+    { path: 'user',  component: AddUserComponent },
+    { path: 'client',  component: ListClientComponent }
 ];

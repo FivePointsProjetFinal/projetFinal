@@ -52,4 +52,13 @@ export class AuthServiceService {
       return true;
     }
   }
+
+  logout() {
+    console.log("ok");
+    
+    localStorage.removeItem('token');
+    localStorage.removeItem('authentificated_user');
+    this.isLoginSubject.next(false);
+    
+  }
 }

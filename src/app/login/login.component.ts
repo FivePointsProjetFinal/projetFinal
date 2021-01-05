@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthServiceService } from 'app/service/auth-service.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { AuthServiceService } from 'app/service/auth-service.service';
 export class LoginComponent implements OnInit {
   loginForm;
   submitted:Boolean=false;
-  constructor(private authServices: AuthServiceService) { }
+  constructor(private authServices: AuthServiceService , private route: Router) { }
 
   ngOnInit(): void {
     this.loginForm= new FormGroup({
@@ -24,11 +25,7 @@ this.submitted=true;
 if (this.loginForm.invalid) {
   return;
 }
-
-
-// if(this.authService.login(this.loginForm.value)){
-//   this.router.navigateByUrl('/admin')
-// }
 this.authServices.login(this.loginForm.value)
+this.route.navigateByUrl('/dashboard')
 }
 }

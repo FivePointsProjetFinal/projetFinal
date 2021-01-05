@@ -34,6 +34,16 @@ public displayedColumns = ['ref-client','name', 'telephone','email', 'address', 
   
   constructor(private router: Router, public dialog: MatDialog ,private ClientServices: ClientServiceService) { }
   
+  ngOnInit(): void {
+    this.getAllOwners();
+  
+  }
+
+   getAllOwners () {
+    this.ClientServices.getClient().subscribe((response:any) => {
+       this.dataSource.data = response.user as Owner[];
+    })
+  }
   openDialog() {
     const dialogRef = this.dialog.open(AddClientComponent);
 
@@ -74,17 +84,9 @@ openModalUpdate(id): void {
 }
 
 
-  ngOnInit(): void {
-    this.getAllOwners();
-  
-  }
 
-   getAllOwners () {
-    this.ClientServices.getClient().subscribe((response:any) => {
-       this.dataSource.data = response.user as Owner[];
-    })
     
-  }
+ 
   favoris(id){
     this.ClientServices.favoris(id);
     location.reload();

@@ -9,14 +9,15 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
-    { path: '/user-profile', title: 'Mon Profile',  icon:'person', class: '' },
+    // { path: '/user-profile', title: 'Mon Profile',  icon:'person', class: '' },
     { path: '/user', title: 'Users',  icon:'people', class: '' },
     { path: '/produit', title: 'Produits',  icon:'local_grocery_store', class: '' },
     { path: '/client', title: 'Clients',  icon:'directions_walk', class: '' },
-    { path: '/fournisseur', title: 'Fournisseurs',  icon:'business_center', class:'data-color="green"' },
+    { path: '/fournisseur', title: 'Fournisseurs',  icon:'business', class:'' },
     // { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
-    { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
-    // { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
+    // { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
+     { path: '/commande', title: 'Commandes',  icon:'fact_check', class: '' },
+     { path: '/facture', title: 'Factures',  icon:'business_center', class:'' },
 ];
 
 @Component({
