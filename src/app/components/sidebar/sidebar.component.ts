@@ -9,13 +9,15 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
-    { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
-    { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
-    { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
-    { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
-    { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
-    { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
+    // { path: '/user-profile', title: 'Mon Profile',  icon:'person', class: '' },
+    { path: '/user', title: 'Users',  icon:'people', class: '' },
+    { path: '/produit', title: 'Produits',  icon:'local_grocery_store', class: '' },
+    { path: '/client', title: 'Clients',  icon:'directions_walk', class: '' },
+    { path: '/fournisseur', title: 'Fournisseurs',  icon:'business', class:'' },
+    // { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
+    // { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
+     { path: '/commande', title: 'Commandes',  icon:'fact_check', class: '' },
+     { path: '/facture', title: 'Factures',  icon:'business_center', class:'' },
 ];
 
 @Component({
