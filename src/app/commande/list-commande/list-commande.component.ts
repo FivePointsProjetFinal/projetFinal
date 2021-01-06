@@ -81,7 +81,12 @@ openModalUpdate(id): void {
   }
 
  redirectToDelete  (id) {
-  this.commandeServices.deleteCommande(id);
+  this.commandeServices.deleteCommande(id).subscribe(
+    (msg) => {
+      console.log(msg) },
+    (error) =>{console.log(error)} ,
+    ()=>{this.ngOnInit()}
+  );
   }
 
   ngAfterViewInit(): void {

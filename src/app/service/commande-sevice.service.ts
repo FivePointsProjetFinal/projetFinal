@@ -24,14 +24,7 @@ export class CommandeSeviceService {
   }
 
   deleteCommande(id) {
-    this.httpClient.delete(this.baseUrl + 'commandes/deletCommande/' + id).subscribe(
-      (msg) => {
-        console.log(msg),
-          location.reload()
-      },
-      (error) => console.log(error)
-
-    );
+  return  this.httpClient.delete(this.baseUrl + 'commandes/deletCommande/' + id)
   }
   getCommandebyid(id) {
     const user = this.httpClient.get(this.baseUrl + 'commandes/getCommandeById/' + id);
