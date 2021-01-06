@@ -1,61 +1,55 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="col-md-12">
-            <div class="card-body"> 
+            <div class="card-body" id="component1"> 
                 <div class="well col-xs-10 col-sm-10  ">
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <address>
-                                <strong>Elf Cafe</strong>
+                                <strong>Client :</strong>
                                 <br>
-                                2135 Sunset Blvd
+                                {{client.nameClient}}
                                 <br>
-                                Los Angeles, CA 90026
+                                {{client.adresseClient}}
                                 <br>
-                                <abbr title="Phone">P:</abbr> (213) 484-6829
+        
+                                {{client.emailClient}}
+                                <br>
+                                <abbr title="Phone">P:</abbr> (216) {{client.telpClient}}
                             </address>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 text-right">
                             <p>
-                                <em>Date: 1st November, 2013</em>
+                                <em>Date: {{date | date:'medium'}}</em>
                             </p>
                             <p>
-                                <em>COMMAND #: 34522677W</em>
+                                <em>Ref COMMAND #: {{refC}}</em>
                             </p>
                         </div>
+                        
                     </div>
-                    <div class="row">
-                        <div class="text-center">
-                            <h1>BON DE COMMAND</h1>
+                    <div class="row mt-3">
+                        <div class="text-center text-primary">
+                            <h2 >Bon de Commande Client </h2>
                         </div>
 
-                        <table class="table table-hover">
+                        <table class="table table-hover mt-5">
                             <thead>
-                                <tr>
+                                <tr  class="table-active">
                                     <th>Product</th>
-                                    <th>#</th>
+                                    <th>Quantite</th>
                                     <th class="text-center">PRIX UNITAIRE</th>
                                     <th class="text-center">PRIX TOTAL</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="col-md-9"><em>Baked Rodopa Sheep Feta</em></td>
-                                    <td class="col-md-1" style="text-align: center"> 2 </td>
-                                    <td class="col-md-1 text-center">$13</td>
-                                    <td class="col-md-1 text-center">$26</td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-9"><em>Lebanese Cabbage Salad</em></td>
-                                    <td class="col-md-1" style="text-align: center"> 1 </td>
-                                    <td class="col-md-1 text-center">$8</td>
-                                    <td class="col-md-1 text-center">$8</td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-9"><em>Baked Tart with Thyme and Garlic</em></td>
-                                    <td class="col-md-1" style="text-align: center"> 3 </td>
-                                    <td class="col-md-1 text-center">$16</td>
-                                    <td class="col-md-1 text-center">$48</td>
+                                
+                                
+                                <tr *ngFor = "let produit of produits">
+                                    <td class="col-md-9"><em>{{produit.nameProduit}}</em></td>
+                                    <td class="col-md-1" style="text-align: center">{{ produit.qty}} </td>
+                                    <td class="col-md-1 text-center">{{produit.prixVente}}</td>
+                                    <td class="col-md-1 text-center">{{produit.montant}}</td>
                                 </tr>
                                 <tr>
                                     <td>   </td>
@@ -78,14 +72,19 @@
                                         <h4><strong>Total: </strong></h4>
                                     </td>
                                     <td class="text-center text-danger">
-                                        <h4><strong>30001.53 DNT</strong></h4>
+                                        <h4><strong>{{this.mont_tot}}DNT</strong></h4>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-
                     </div>
                 </div>
-</div>
+            </div>
+           
+            <button class="mat-raised-button btn btn-danger  pull-right" (click)="close()">Close</button>
+                <button class="btn btn-success hidden-print pull-right" (click)="printComponent('component1')"><span class="material-icons">
+                    local_printshop
+                    </span> Print</button>
+           
         </div>
     </div>

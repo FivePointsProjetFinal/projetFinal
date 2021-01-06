@@ -90,6 +90,7 @@ export class AddCommandeComponent implements OnInit {
     const prix=this.produits.find(element => element._id=== e.source.value);
     this.produitRows.at(i).patchValue({prixVente:prix.prixVente});
     this.produitRows.at(i).patchValue({qty:0});
+    this.produitRows.at(i).patchValue({nameProduit:prix.nameProduit});
   }
 
   saverange(e,i){
@@ -111,6 +112,7 @@ export class AddCommandeComponent implements OnInit {
     return this._fb.group({
         //list all your form controls here, which belongs to your form array
         nameProduit: [''],
+        id_produit:[''],
         qty:[''],
         prixVente:[''],
         montant:['']
