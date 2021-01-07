@@ -36,9 +36,8 @@ export class PackComponent implements OnInit {
   submited = false;
   @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
-
-
   @ViewChild(MatAccordion) accordion: MatAccordion;
+;
   
   public displayedColumns = ['refPack', 'namePack','produits', 'update', 'delete'];
   public dataSource = new MatTableDataSource<pack>();
@@ -63,9 +62,6 @@ export class PackComponent implements OnInit {
     this.dataSource.data = response.pack as pack[];
     console.log( response.pack);  
  })
-
-
-
   }
 
   save(){
@@ -74,9 +70,15 @@ export class PackComponent implements OnInit {
    if (this.PackForm.invalid) {
      return;
    }
-      this.produitServices.addPack(this.PackForm.value);
-    
-    
+      this.produitServices.addPack(this.PackForm.value).subscribe(
+        (msg) => {
+          console.log(msg)
+        },
+        (error) => {console.log(error)},
+        ()=>{this.ngOnInit()}
+      
+      ); 
+      this.accordion.closeAll()
   }
 
   add(event: MatChipInputEvent): void {

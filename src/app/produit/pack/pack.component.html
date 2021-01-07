@@ -1,48 +1,65 @@
-<form [formGroup]="PackForm">
-    <div class="row">
-        <div class="col-md-4">
-            <mat-form-field>
-                <input matInput formControlName="refPack" placeholder="Ref Categorie" type="text">
-                <mat-error *ngIf="PackForm.controls.refPack.hasError('required')">
-                    Ref Categorie is required.
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div class="col-md-4">
-            <mat-form-field>
-                <input matInput formControlName="namePack" placeholder="Name Categorie" type="text">
-                <mat-error *ngIf="PackForm.controls.namePack.hasError('required')">
-                    Name Categorie is required.
-                </mat-error>
-            </mat-form-field>
-        </div>
+<mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-description>
+                <span class="material-icons">
+                    add
+                </span>
+                Ajouter Pack
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <form [formGroup]="PackForm">
+            <div class="row">
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input matInput formControlName="refPack" placeholder="Ref Categorie" type="text">
+                        <mat-error *ngIf="PackForm.controls.refPack.hasError('required')">
+                            Ref Categorie is required.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input matInput formControlName="namePack" placeholder="Name Categorie" type="text">
+                        <mat-error *ngIf="PackForm.controls.namePack.hasError('required')">
+                            Name Categorie is required.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+        
+                <div class="col-md-4">
+                    <mat-form-field class="example-chip-list">
+                        <mat-label> Produits</mat-label>
+                        <mat-chip-list #chipList aria-label="Produit selection">
+                            <mat-chip *ngFor="let prod of TabProduit" [selectable]="selectable" [removable]="removable"
+                                (removed)="remove(prod)">
+                                {{prod}}
+                                <span matChipRemove *ngIf="removable" class="material-icons">
+                                    clear
+                                </span>
+        
+                            </mat-chip>
+                            <input placeholder="Produit..." #fruitInput [formControl]="ProduitCtrl" [matAutocomplete]="auto"
+                                [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                (matChipInputTokenEnd)="add($event)">
+                        </mat-chip-list>
+                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                            <mat-option *ngFor="let TabProduit of filteredProduits | async" [value]="TabProduit">
+                                {{TabProduit.nameProduit}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </div>
+                <div><button (click)="save()" class="btn btn-outline-primary bg-white">AJOUTER</button></div>
+            </div>
+        </form>
+    </mat-expansion-panel>
+</mat-accordion>
 
-        <div class="col-md-4">
-            <mat-form-field class="example-chip-list">
-                <mat-label> Produits</mat-label>
-                <mat-chip-list #chipList aria-label="Produit selection">
-                    <mat-chip *ngFor="let prod of TabProduit" [selectable]="selectable" [removable]="removable"
-                        (removed)="remove(prod)">
-                        {{prod}}
-                        <span matChipRemove *ngIf="removable" class="material-icons">
-                            clear
-                        </span>
 
-                    </mat-chip>
-                    <input placeholder="Produit..." #fruitInput [formControl]="ProduitCtrl" [matAutocomplete]="auto"
-                        [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                        (matChipInputTokenEnd)="add($event)">
-                </mat-chip-list>
-                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-                    <mat-option *ngFor="let TabProduit of filteredProduits | async" [value]="TabProduit">
-                        {{TabProduit.nameProduit}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-        </div>
-        <div><button (click)="save()" class="btn btn-outline-primary bg-white">AJOUTER</button></div>
-    </div>
-</form>
+
+
+
 
 
 <div class="table-responsive">

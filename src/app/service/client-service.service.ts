@@ -10,13 +10,7 @@ export class ClientServiceService {
   constructor(private  httpClient: HttpClient) { }
 
   addClient(cl){
-    this.httpClient.post<any>(this.baseUrl+'clients/addClient',cl).subscribe(
-      (msg) => {
-        console.log(msg),
-        location.reload()
-      },
-      (error) => console.log(error)
-    );
+  return  this.httpClient.post<any>(this.baseUrl+'clients/addClient',cl)
   }
   getClient(){
     const user= this.httpClient.get(this.baseUrl+'clients/allClients');
@@ -24,11 +18,7 @@ export class ClientServiceService {
   }
   deleteClient(id){
 
-    this.httpClient.delete(this.baseUrl+'clients/deletClient/'+id).subscribe(
-      (msg) => console.log(msg),
-      (error) => console.log(error)
-    );
- 
+  return  this.httpClient.delete(this.baseUrl+'clients/deletClient/'+id)
   }
   getClientbyid(id){
     const user= this.httpClient.get(this.baseUrl+'clients/getClientById/'+id);
@@ -44,13 +34,7 @@ export class ClientServiceService {
     );
   }
   favoris(id){
-    this.httpClient.put(this.baseUrl+'clients/updateFav/'+id,"").subscribe(
-      (msg) => {
-        console.log(msg),
-        location.reload()
-      },
-      (error) => console.log(error)
-    );
+  return  this.httpClient.put(this.baseUrl+'clients/updateFav/'+id,"")
   }
   getFavClient(){
     const client= this.httpClient.get(this.baseUrl+'clients/getFavoritClient');

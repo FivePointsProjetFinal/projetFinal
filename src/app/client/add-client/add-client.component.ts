@@ -41,7 +41,14 @@ export class AddClientComponent implements OnInit {
     }
    
     
-     this.ClientServices.addClient(this.clientForm.value);
+     this.ClientServices.addClient(this.clientForm.value).subscribe(
+      (msg) => {
+        console.log(msg),
+        location.reload()
+      },
+      (error) => {console.log(error)},
+      ()=>{this.ngOnInit()}
+    );
     
   }
 

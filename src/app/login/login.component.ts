@@ -26,6 +26,6 @@ if (this.loginForm.invalid) {
   return;
 }
 this.authServices.login(this.loginForm.value)
-this.route.navigateByUrl('/dashboard')
+ this.route.navigateByUrl('/dashboard')
 }
 }

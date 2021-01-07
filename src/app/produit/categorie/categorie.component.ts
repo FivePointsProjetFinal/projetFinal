@@ -53,12 +53,17 @@ export class CategorieComponent implements OnInit {
     if (this.CategorieForm.invalid) {
       return;
     }
-       this.produitServices.addCategorie(this.CategorieForm.value);
+       this.produitServices.addCategorie(this.CategorieForm.value).subscribe(
+        (msg) => {
+          console.log(msg)
+        },
+        (error) => {console.log(error)},
+        ()=>{this.ngOnInit()}
+      ); 
        this.accordion.closeAll()
   }
   update(i)
   {
-    console.log("ok");
     this.index=i;
     this.showAddButton=false;
     this.accordion.openAll();
@@ -74,11 +79,23 @@ export class CategorieComponent implements OnInit {
       return;
     }else
     {
-      this.produitServices.updateCategorie(this.index,this.CategorieForm.value);
+      this.produitServices.updateCategorie(this.index,this.CategorieForm.value).subscribe(
+        (msg) => {
+          console.log(msg)
+        },
+        (error) => {console.log(error)},
+        ()=>{this.ngOnInit()}
+      ); 
       this.accordion.closeAll()
     }
   }
   redirectToDelete  (id) {
-    this.produitServices.deleteCat(id); 
+    this.produitServices.deleteCat(id).subscribe(
+      (msg) => {
+        console.log(msg)
+      },
+      (error) => {console.log(error)},
+      ()=>{this.ngOnInit()}
+    ); 
     }
 }

@@ -79,7 +79,13 @@ openModalUpdate(id): void {
 
  
  redirectToDelete  (id) {
-  this.produitServices.deleteProduit(id); 
+  this.produitServices.deleteProduit(id).subscribe(
+    (msg) => {
+      console.log(msg)
+    },
+    (error) => {console.log(error)},
+    ()=>{this.ngOnInit()}
+  ); 
   }
 
   ngAfterViewInit(): void {

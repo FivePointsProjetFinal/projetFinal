@@ -23,13 +23,7 @@ export class FournisseurServiceService {
     return user;
   }
   deleteFournisseur(id){
-    this.httpClient.delete(this.baseUrl+'fournisseurs/deletFournisseur/'+id).subscribe(
-      (msg) => {
-        console.log(msg),
-        location.reload()
-      },
-      (error) => console.log(error)
-    );
+   return this.httpClient.delete(this.baseUrl+'fournisseurs/deletFournisseur/'+id);
   }
   getFournisseurbyid(id){
     const user= this.httpClient.get(this.baseUrl+'fournisseurs/getFournisseurById/'+id);
@@ -45,13 +39,7 @@ export class FournisseurServiceService {
     );
   }
   favoris(id){
-    this.httpClient.put(this.baseUrl+'fournisseurs/updateFavF/'+id,"").subscribe(
-      (msg) => {
-        console.log(msg),
-        location.reload()
-      },
-      (error) => console.log(error)
-    );
+   return this.httpClient.put(this.baseUrl+'fournisseurs/updateFavF/'+id,"");
   }
   getFavFournisseur(){
     const fournisseur= this.httpClient.get(this.baseUrl+'fournisseurs/getFavoritF');
