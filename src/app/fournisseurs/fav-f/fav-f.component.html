@@ -32,16 +32,7 @@
                                         <th mat-header-cell *matHeaderCellDef mat-sort-header> email Fournisseur </th>
                                         <td mat-cell *matCellDef="let element"> {{element.emailFournisseur }} </td>
                                       </ng-container>
-                                    <ng-container matColumnDef="favoris">
-                                        <th mat-header-cell *matHeaderCellDef> favoris </th>
-                                        <td mat-cell *matCellDef="let element">
-                                          <button mat-icon-button color="warn" (click)="favoris(element._id)">
-                                            <span class="material-icons">
-                                                remove
-                                                </span>
-                                            </button>
-                                        </td>
-                                      </ng-container>
+                                  
 
                                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

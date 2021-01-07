@@ -20,7 +20,7 @@ export interface fav{
 })
 export class FavFComponent implements OnInit {
 
-  public displayedColumns = ['ref_f','name', 'telephone','email', 'address', 'favoris'];
+  public displayedColumns = ['ref_f','name', 'telephone','email', 'address'];
   public dataSource = new MatTableDataSource<fav>();
 
   @ViewChild(MatSort) sort: MatSort;
@@ -37,7 +37,14 @@ export class FavFComponent implements OnInit {
    })
 }
 favoris(id){
-  this.FournisseurServices.favoris(id);
-   location.reload();
+  this.FournisseurServices.favoris(id).subscribe(
+    (msg) => {
+      console.log(msg)
+   
+    },
+    (error) => {console.log(error)},
+    ()=>{this.ngOnInit()}
+  );
+
 }
 }

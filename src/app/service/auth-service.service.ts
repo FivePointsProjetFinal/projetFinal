@@ -1,5 +1,6 @@
 import { HttpClient,HttpResponse , HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class AuthServiceService {
  
 
 
-  constructor(private  httpClient: HttpClient) { }
+  constructor(private  httpClient: HttpClient, private route: Router) { }
 
   isLoginSubject = new BehaviorSubject<boolean>(this.isAuthentificated())
 
@@ -33,7 +34,10 @@ export class AuthServiceService {
   login(log){
   this.httpClient.post(this.baseUrl+'/logins/login',log) .subscribe((response:any) => {
     if (response.token) {
+      console.log(response);
+      
       localStorage.setItem('token',response.token );
+      localStorage.setItem('role',response.user );
       this.isLoginSubject.next(true);
       console.log(response.message);
     }
@@ -46,19 +50,30 @@ export class AuthServiceService {
   
   public isAuthentificated(): boolean {
     const token = localStorage.getItem('token');
+    const user = localStorage.getItem('role');
     if (token == null) {
       return false;
     } else {
       return true;
     }
   }
-
+ 
+  public UserAuthentificated(): boolean {
+   
+    const user = localStorage.getItem('role');
+    if (user ==="admin") {
+      return true;
+    } else {
+      return false;
+    }
+  }
   logout() {
     console.log("ok");
     
     localStorage.removeItem('token');
     localStorage.removeItem('authentificated_user');
     this.isLoginSubject.next(false);
+    this.route.navigateByUrl('/admin')
     
   }
 }

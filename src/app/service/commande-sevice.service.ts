@@ -40,13 +40,7 @@ export class CommandeSeviceService {
     );
   }
   validation(id){
-    this.httpClient.put(this.baseUrl+'commandes/valideCommabde/'+id,"").subscribe(
-      (msg) => {
-        console.log(msg),
-        location.reload()
-      },
-      (error) => console.log(error)
-    );
+   return this.httpClient.put(this.baseUrl+'commandes/valideCommabde/'+id,"")
   }
 
 }

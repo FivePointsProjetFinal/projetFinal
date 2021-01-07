@@ -15,6 +15,8 @@ import { AffichClientComponent } from 'app/client/affich-client/affich-client.co
 import { ListCommandeComponent } from 'app/commande/list-commande/list-commande.component';
 import { AddCommandeComponent } from 'app/commande/add-commande/add-commande.component';
 import { AffichCommandeComponent } from 'app/commande/affich-commande/affich-commande.component';
+import { AuthServiceService } from 'app/service/auth-service.service';
+import { AuthGuard } from 'app/auth.guard';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -65,21 +67,25 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
      { path: 'notifications',  component: NotificationsComponent },
 
-     { path: 'commande', 
-      children: [
-        {
-           path: '',
-           component: AddCommandeComponent
-           }
-           , {
-            path: 'detail/:id',
-           component: AffichCommandeComponent
-           }] },
+    //  { path: 'commande', 
+    //   children: [
+    //     {
+    //        path: '',
+    //        component: AddCommandeComponent
+    //        }
+    //        , {
+    //         path: 'detail/:id',
+    //        component: AffichCommandeComponent
+    //        }] },
 
-
-
+    { path: 'client',  component: ListClientComponent },
+    { path: 'commande',  component: AddCommandeComponent },
     { path: 'fournisseur',  component: ListFComponent },
     { path: 'produit',  component: ListProduitComponent },
-    { path: 'user',  component: AddUserComponent },
-    { path: 'client',  component: ListClientComponent }
+    {
+       path: 'user', 
+     component: AddUserComponent,
+     canActivateChild: [AuthGuard]
+     },
+    
 ];

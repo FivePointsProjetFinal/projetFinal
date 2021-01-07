@@ -25,14 +25,7 @@ export class ProduitServiceService {
   }
 
   deleteProduit(id) {
-    this.httpClient.delete(this.baseUrl + 'produits/deletProduit/' + id).subscribe(
-      (msg) => {
-        console.log(msg),
-          location.reload()
-      },
-      (error) => console.log(error)
-
-    );
+   return this.httpClient.delete(this.baseUrl + 'produits/deletProduit/' + id)
   }
   getProduitbyid(id) {
     const user = this.httpClient.get(this.baseUrl + 'produits/getProduitById/' + id);
@@ -49,50 +42,25 @@ export class ProduitServiceService {
   }
   /******************************************** */
   addCategorie(cat) {
-    this.httpClient.post<any>(this.baseUrl + 'categorie/addCategorie', cat).subscribe(
-      (msg) => {
-        console.log(msg),
-        location.reload()
-      },
-      (error) => console.log(error)
-    );
+   return this.httpClient.post<any>(this.baseUrl + 'categorie/addCategorie', cat)
   }
   getCategorie() {
     const cat = this.httpClient.get(this.baseUrl + 'categorie/allCategorie');
     return cat;
   }
   updateCategorie(id, cat) {
-    this.httpClient.put(this.baseUrl + 'categorie/updateCategorie/' + id, cat).subscribe(
-      (msg) => {
-        console.log(msg),
-        location.reload()
-      },
-      (error) => console.log(error)
-    );
+  return  this.httpClient.put(this.baseUrl + 'categorie/updateCategorie/' + id, cat)
   }
   getCatbyid(id) {
     const cat = this.httpClient.get(this.baseUrl + 'categorie/getCatById/' + id);
     return cat;
   }
   deleteCat(id) {
-    this.httpClient.delete(this.baseUrl + 'categorie/deletCat/' + id).subscribe(
-      (msg) => {
-        console.log(msg),
-          location.reload()
-      },
-      (error) => console.log(error)
-
-    );
+    return this.httpClient.delete(this.baseUrl + 'categorie/deletCat/' + id)
   }
   /******************************************** */
   addPack(cat) {
-    this.httpClient.post<any>(this.baseUrl + 'packs/addPack', cat).subscribe(
-      (msg) => {
-        console.log(msg)
-        // location.reload()
-      },
-      (error) => console.log(error)
-    );
+  return  this.httpClient.post<any>(this.baseUrl + 'packs/addPack', cat)
   }
   getPack() {
     const cat = this.httpClient.get(this.baseUrl + 'packs/allPack');

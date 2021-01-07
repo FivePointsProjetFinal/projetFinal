@@ -76,7 +76,12 @@ openModalUpdate(id): void {
     
  
   valide(id){
-    this.commandeServices.validation(id);
+    this.commandeServices.validation(id).subscribe(
+      (msg) => {
+        console.log(msg) },
+      (error) =>{console.log(error)} ,
+      ()=>{this.ngOnInit()}
+    )
   
   }
 

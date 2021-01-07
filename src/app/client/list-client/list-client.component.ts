@@ -88,13 +88,24 @@ openModalUpdate(id): void {
     
  
   favoris(id){
-    this.ClientServices.favoris(id);
-    location.reload();
+    this.ClientServices.favoris(id).subscribe(
+      (msg) => {
+        console.log(msg)
+      },
+      (error) => {console.log(error)},
+      ()=>{this.ngOnInit()}
+    );
   }
 
  redirectToDelete  (id) {
-  this.ClientServices.deleteClient(id);
-  location.reload();
+  this.ClientServices.deleteClient(id).subscribe(
+    (msg) => {
+      console.log(msg)
+    },
+    (error) => {console.log(error)},
+    ()=>{this.ngOnInit()}
+  );
+
   
   }
 

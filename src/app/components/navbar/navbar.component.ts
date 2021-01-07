@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
     constructor(location: Location,  private element: ElementRef, private router: Router,private authServices: AuthServiceService) {
       this.location = location;
           this.sidebarVisible = false;
+          
     }
 
     ngOnInit(){
@@ -34,7 +35,10 @@ export class NavbarComponent implements OnInit {
          }
      });
     }
-
+    logOutBar(){
+        this.authServices.logout();
+        this.router.navigateByUrl("/login");
+    }
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const body = document.getElementsByTagName('body')[0];
@@ -123,8 +127,5 @@ export class NavbarComponent implements OnInit {
       }
       return 'Dashboard';
     }
-    logOutBar(){
-        this.authServices.logout();
-
-    }
+ 
 }

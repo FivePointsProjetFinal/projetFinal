@@ -8,6 +8,7 @@ import { ClientServiceService } from 'app/service/client-service.service';
 import { FournisseurServiceService } from 'app/service/fournisseur-service.service';
 import { AddFComponent } from '../add-f/add-f.component';
 import { AffichFComponent } from '../affich-f/affich-f.component';
+import { FavFComponent } from '../fav-f/fav-f.component';
 import { UpdateFComponent } from '../update-f/update-f.component';
 
 
@@ -78,18 +79,39 @@ ngOnInit(): void {
   })
   
 }
+openDialog2() {
+  const dialogRef = this.dialog.open(FavFComponent);
 
+  dialogRef.afterClosed().subscribe(result => {
+    console.log(`Dialog result: ${result}`);
+  });
+}
 favoris(id){
-  this.FournisseurServices.favoris(id);
-   location.reload();
+  this.FournisseurServices.favoris(id).subscribe(
+    (msg) => {
+      console.log(msg)
+   
+    },
+    (error) => {console.log(error)},
+    ()=>{this.ngOnInit()}
+  );
+
 }
 
 redirectToDelete  (id) {
-this.FournisseurServices.deleteFournisseur(id);
-console.log("ok1");
+this.FournisseurServices.deleteFournisseur(id).subscribe(
+  (msg) => {
+    console.log(msg)
+ 
+  },
+  (error) => {console.log(error)},
+  ()=>{this.ngOnInit()}
+);
 
 }
-
+relod(){
+  this.ngOnInit();
+}
 ngAfterViewInit(): void {
   this.dataSource.sort = this.sort;
   this.dataSource.paginator = this.paginator;

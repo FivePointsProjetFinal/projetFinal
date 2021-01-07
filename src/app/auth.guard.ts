@@ -6,12 +6,14 @@ import { AuthServiceService } from './service/auth-service.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthGuard implements CanActivate {
   constructor(public userService: AuthServiceService, public router: Router) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    state: RouterStateSnapshot):
+     Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       let isLoggedIn = this.userService.isAuthentificated();
       if (isLoggedIn) {
         return true;
@@ -20,6 +22,15 @@ export class AuthGuard implements CanActivate {
         return false;
       }
     }
-  
-  
+    canActivateChild(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot):
+     Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      let isLoggedAdmin = this.userService.UserAuthentificated();
+      if (isLoggedAdmin) {
+        return true;
+      } else {
+        return false;
+      }
+    }
 }

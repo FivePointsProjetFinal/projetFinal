@@ -46,11 +46,11 @@ this.refC=response.commande.refCommande;
     document.body.innerHTML = printContents;
 
     window.print();
-
     document.body.innerHTML = originalContents;
 }
-close(): void {
+close() {
   this.dialogRef.close();
+  
 }   
 
 }
