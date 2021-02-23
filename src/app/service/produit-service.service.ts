@@ -45,18 +45,18 @@ export class ProduitServiceService {
    return this.httpClient.post<any>(this.baseUrl + 'categorie/addCategorie', cat)
   }
   getCategorie() {
-    const cat = this.httpClient.get(this.baseUrl + 'categorie/allCategorie');
+    const cat = this.httpClient.get(this.baseUrl + 'categorie/allCategories');
     return cat;
   }
   updateCategorie(id, cat) {
   return  this.httpClient.put(this.baseUrl + 'categorie/updateCategorie/' + id, cat)
   }
   getCatbyid(id) {
-    const cat = this.httpClient.get(this.baseUrl + 'categorie/getCatById/' + id);
+    const cat = this.httpClient.get(this.baseUrl + 'categorie/getCategorieById/' + id);
     return cat;
   }
   deleteCat(id) {
-    return this.httpClient.delete(this.baseUrl + 'categorie/deletCat/' + id)
+    return this.httpClient.delete(this.baseUrl + 'categorie/deletCategorie/' + id)
   }
   /******************************************** */
   addPack(cat) {

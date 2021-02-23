@@ -37,7 +37,7 @@ export class AffichFComponent implements OnInit {
     });
 
      this.FournisseurServices.getFournisseurbyid(this.data.id).subscribe((response:any) => {
-       this.FournisseurForm.patchValue(response.fournisseur);        
+       this.FournisseurForm.patchValue(response);        
     });
    }
    close(): void {

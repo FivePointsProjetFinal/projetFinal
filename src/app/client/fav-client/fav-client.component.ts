@@ -33,7 +33,7 @@ export class FavClientComponent implements OnInit {
   }
   getAllOwners () {
     this.ClientServices.getFavClient().subscribe((response:any) => {
-       this.dataSource.data = response.user as fav[];
+       this.dataSource.data = response as fav[];
     })
 
 }

@@ -85,7 +85,7 @@ export const AdminLayoutRoutes: Routes = [
     {
        path: 'user', 
      component: AddUserComponent,
-     canActivateChild: [AuthGuard]
+    //  canActivateChild: [AuthGuard]
      },
     
 ];

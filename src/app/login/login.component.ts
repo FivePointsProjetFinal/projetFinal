@@ -25,7 +25,7 @@ this.submitted=true;
 if (this.loginForm.invalid) {
   return;
 }
-this.authServices.login(this.loginForm.value)
+ this.authServices.login(this.loginForm.value)
  this.route.navigateByUrl('/dashboard')
 }
 }

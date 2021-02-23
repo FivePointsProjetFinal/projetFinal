@@ -16,10 +16,11 @@ export class AuthServiceService {
   isLoginSubject = new BehaviorSubject<boolean>(this.isAuthentificated())
 
   addUser(user){
-    const  token = localStorage.getItem('token');
-    const  headers  = new HttpHeaders().set("Authorization", 'Bearer ' + token);
-    this.httpClient.post<any>(this.baseUrl+'users/addUser',user,{ headers: headers }).subscribe(
-      (msg) => {
+    // const  token = localStorage.getItem('token');
+    // const  headers  = new HttpHeaders().set("Authorization", 'Bearer ' + token);
+    // this.httpClient.post<any>(this.baseUrl+'users/addUser',user,{ headers: headers }).subscribe(
+      this.httpClient.post<any>(this.baseUrl+'users/addUser',user ).subscribe(
+    (msg) => {
         console.log(msg),
         location.reload()
       },
@@ -32,18 +33,18 @@ export class AuthServiceService {
   }
   
   login(log){
-  this.httpClient.post(this.baseUrl+'/logins/login',log) .subscribe((response:any) => {
-    if (response.token) {
-      console.log(response);
+  // this.httpClient.post(this.baseUrl+'/logins/login',log) .subscribe((response:any) => {
+  //   if (response.token) {
+      console.log("ok");
       
-      localStorage.setItem('token',response.token );
-      localStorage.setItem('role',response.user );
+      localStorage.setItem('token',"response.token" );
+      localStorage.setItem('role',"response.user" );
       this.isLoginSubject.next(true);
-      console.log(response.message);
-    }
-    (error) => console.log(error.message)
+     
+  //   }
+  //   (error) => console.log(error.message)
       
-   })
+  //  })
 
       
   }

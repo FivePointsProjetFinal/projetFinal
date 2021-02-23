@@ -22,8 +22,6 @@ produits: any = [];
 
   ngOnInit(): void {
     this.CommandeServices.getCommandebyid(this.data.id).subscribe((response:any) => {
-      console.log(response);
-      
       response.commande.produitRows.forEach(element => {
         this.produits.push(element)
       });
