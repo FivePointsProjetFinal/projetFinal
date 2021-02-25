@@ -11,15 +11,15 @@
                                     <table mat-table [dataSource]="dataSource" matSort
                                         (matSortChange)="customSort($event)">
                                         <ng-container matColumnDef="ref-Commande">
-                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Ref refCommande </th>
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header><i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp; Ref Commande </th>
                                             <td mat-cell *matCellDef="let element"> {{element.refCommande}} </td>
                                         </ng-container>
                                         <ng-container matColumnDef=" montant_total ">
-                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Montant Total </th>
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header><i class="fa fa-usd" aria-hidden="true"></i>&nbsp; Montant Total</th>
                                             <td mat-cell *matCellDef="let element"> {{element.montant_total}} DNT </td>
                                         </ng-container>
                                         <ng-container matColumnDef="date_commande">
-                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> date commande </th>
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header><i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp; Date commande</th>
                                             <td mat-cell *matCellDef="let element"> {{element.date_commande |
                                                 date:'medium'}} </td>
                                         </ng-container>
@@ -27,7 +27,7 @@
 
 
                                         <ng-container matColumnDef="details">
-                                            <th mat-header-cell *matHeaderCellDef> Details </th>
+                                            <th mat-header-cell *matHeaderCellDef><i class="fa fa-info" aria-hidden="true"></i>&nbsp;  Details </th>
                                             <td mat-cell *matCellDef="let element">
                                                 <button mat-icon-button color="primary"
                                                     (click)="openModal(element._id)">
@@ -37,7 +37,7 @@
                                         </ng-container>
 
                                         <ng-container matColumnDef="update">
-                                            <th mat-header-cell *matHeaderCellDef> Update </th>
+                                            <th mat-header-cell *matHeaderCellDef><i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp; Update </th>
                                             <td mat-cell *matCellDef="let element">
                                                 <button mat-icon-button color="accent"
                                                     (click)="openModalUpdate(element._id)">
@@ -47,7 +47,7 @@
                                         </ng-container>
 
                                         <ng-container matColumnDef="delete">
-                                            <th mat-header-cell *matHeaderCellDef> Delete </th>
+                                            <th mat-header-cell *matHeaderCellDef><i class="fa fa-times" aria-hidden="true"></i>&nbsp; Delete </th>
                                             <td mat-cell *matCellDef="let element">
                                                 <button mat-icon-button color="warn"
                                                     (click)="redirectToDelete(element._id)">
@@ -56,7 +56,7 @@
                                             </td>
                                         </ng-container>
                                         <ng-container matColumnDef="Validee">
-                                            <th mat-header-cell *matHeaderCellDef> Valide </th>
+                                            <th mat-header-cell *matHeaderCellDef><i class="fa fa-reply" aria-hidden="true"></i> &nbsp;Valide </th>
                                             <td mat-cell *matCellDef="let element">
                                                 <button mat-icon-button color="warn" (click)="valide(element._id)">
                                                     <span class="material-icons text-danger"

@@ -19,7 +19,7 @@ export class AddCommandeComponent implements OnInit {
   clients: Array<any>;
   commandeForm: FormGroup;
   commande;
-
+  submited:boolean=false;
   total:number=0;
   constructor(private _fb: FormBuilder,private produitServices: ProduitServiceService ,
     private ref: ChangeDetectorRef,  private ClientServices: ClientServiceService,
@@ -34,7 +34,7 @@ export class AddCommandeComponent implements OnInit {
     this.commandeForm = this._fb.group({
       produitRows: this._fb.array([this.initItemRows()]) ,
       refCommande : new FormControl('', [Validators.required]),
-      idClient: new FormControl(),
+      idClient: new FormControl('', [Validators.required]),
       montant_total:new FormControl(),
       date_commande:new FormControl(Date.now()),
       valide:new FormControl(false)
@@ -52,10 +52,8 @@ export class AddCommandeComponent implements OnInit {
   }
   save(){
    this.commandeForm.patchValue({'montant_total':this.total})
-   
-    console.log(this.commandeForm.value);
 
-    // this.submited = true;
+    this.submited=true;
     if (this.commandeForm.invalid) {
       return;
     }
@@ -96,26 +94,19 @@ export class AddCommandeComponent implements OnInit {
   saverange(e,i){
    const prix= this.commandeForm.value.produitRows[i].prixVente
     this.produitRows.at(i).patchValue({montant:e*prix});
-
-   this.total+=e*prix
+   let k= this.produitRows.at(i).value.montant;
+   this.total+=k;
    
-  //   this.produitRows.controls.forEach((control) => {
-  //     control.valueChanges.subscribe(() =>{
-  //     const   sum=parseInt(control.value['montant']);
-  //        this.total+=sum;   
-  //     })
-   
-  // })
   }
 
   initItemRows() {
     return this._fb.group({
         //list all your form controls here, which belongs to your form array
-        nameProduit: [''],
-        id_produit:[''],
-        qty:[''],
-        prixVente:[''],
-        montant:['']
+        nameProduit: ['', [Validators.required]],
+        id_produit:['', [Validators.required]],
+        qty:['', [Validators.required]],
+        prixVente:['', [Validators.required]],
+        montant:['', [Validators.required]]
 
     });
 }

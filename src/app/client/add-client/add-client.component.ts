@@ -10,7 +10,7 @@ import { ClientServiceService } from 'app/service/client-service.service';
 })
 export class AddClientComponent implements OnInit {
   
-  submited = true;
+  submited = false;
   clientForm: FormGroup;
   
   constructor(private ClientServices: ClientServiceService, private route: Router) { }
