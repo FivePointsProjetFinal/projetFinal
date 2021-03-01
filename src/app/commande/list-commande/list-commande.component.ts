@@ -35,7 +35,7 @@ export class ListCommandeComponent implements OnInit {
 
   ngOnInit(): void {
     this.commandeServices.getCommande().subscribe((response:any) => {
-        this.dataSource.data = response.commande as commandes[];
+        this.dataSource.data = response as commandes[];
    })
   }
 
