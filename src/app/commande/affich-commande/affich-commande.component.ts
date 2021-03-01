@@ -22,7 +22,7 @@ produits: any = [];
 
   ngOnInit(): void {
     this.CommandeServices.getCommandebyid(this.data.id).subscribe((response:any) => {
-      response.commande.produitRows.forEach(element => {
+      response.produitRows.forEach(element => {
         this.produits.push(element)
       });
       console.log(this.produits);
@@ -33,7 +33,7 @@ this.refC=response.commande.refCommande;
 
 
       this.ClientServices.getClientbyid(response.commande.idClient).subscribe((resp:any) => {
-      this.client=resp.user
+      this.client=resp
       })
   })
   }

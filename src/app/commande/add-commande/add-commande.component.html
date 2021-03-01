@@ -30,7 +30,7 @@
                                             
                                              
                                                 <mat-select class="form-control border bg-white" formControlName="idClient" placeholder="name Client">
-                                                    <mat-option class="text-muted pl-1" *ngFor="let client of clients" [value]="client._id">
+                                                    <mat-option class="text-muted pl-1" *ngFor="let client of clients" [value]="client.id">
                                                         {{client.nameClient}}
                                                     </mat-option>
                                                 </mat-select>
@@ -77,7 +77,7 @@
                                                         </ngx-mat-select-search>
                                                         <mat-option
                                                             *ngFor="let produit of produits |stringFilterBy:searchCtrl:'nameProduit'"
-                                                            [value]="produit._id">
+                                                            [value]="produit.id">
                                                             {{produit.nameProduit}}
                                                         </mat-option>
                                                     </mat-select>

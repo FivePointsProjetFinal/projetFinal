@@ -3,7 +3,6 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { ClientServiceService } from 'app/service/client-service.service';
 import { CommandeSeviceService } from 'app/service/commande-sevice.service';
 import { ProduitServiceService } from 'app/service/produit-service.service';
-import { umask } from 'process';
 
 @Pipe({
   name: 'stringFilterBy'
@@ -40,11 +39,11 @@ export class AddCommandeComponent implements OnInit {
       valide:new FormControl(false)
     });
     this.produitServices.getProduit().subscribe((response:any) => {
-      this.produits= response.produit ;
+      this.produits= response ;
    })  
 
    this.ClientServices.getClient().subscribe((response: any) => {
-    this.clients = response.user;
+    this.clients = response;
   })
    this.ref.detectChanges();
  
@@ -85,7 +84,7 @@ export class AddCommandeComponent implements OnInit {
 }
 
   onSelectionChange(e,i) {
-    const prix=this.produits.find(element => element._id=== e.source.value);
+    const prix=this.produits.find(element => element.id=== e.source.value);
     this.produitRows.at(i).patchValue({prixVente:prix.prixVente});
     this.produitRows.at(i).patchValue({qty:0});
     this.produitRows.at(i).patchValue({nameProduit:prix.nameProduit});

@@ -33,10 +33,10 @@ export class AddProduitComponent implements OnInit {
       idPack: new FormControl(),
     });
     this.FournisseurServices.getFournisseur().subscribe((response: any) => {
-      this.fournis = response.fournisseur;
+      this.fournis = response;
     })
     this.ProduitServices.getCategorie().subscribe((response: any) => {
-      this.cats = response.cat;
+      this.cats = response;
     })
   }
 
