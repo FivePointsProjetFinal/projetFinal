@@ -27,11 +27,8 @@ export class AddCommandeComponent implements OnInit {
   }
 
   ngOnInit(){
-    // this.commande= new FormGroup({
-     
-    // });
     this.commandeForm = this._fb.group({
-      produitRows: this._fb.array([this.initItemRows()]) ,
+      commandeItems: this._fb.array([this.initItemRows()]) ,
       refCommande : new FormControl('', [Validators.required]),
       idClient: new FormControl('', [Validators.required]),
       montant_total:new FormControl(),
@@ -50,50 +47,53 @@ export class AddCommandeComponent implements OnInit {
   
   }
   save(){
-   this.commandeForm.patchValue({'montant_total':this.total})
-
+  
     this.submited=true;
     if (this.commandeForm.invalid) {
       return;
     }
-    this.CommandeServices.addCommande(this.commandeForm.value);
+    
+    console.log(this.commandeForm.value);
+     this.CommandeServices.addCommande(this.commandeForm.value);
   }
   
 
  
   createForm(){
     this.commandeForm = this._fb.group({
-      produitRows: this._fb.array([])
+      commandeItems: this._fb.array([])
     });
-    this.commandeForm.setControl('produitRows', this._fb.array([]));
+    this.commandeForm.setControl('commandeItems', this._fb.array([]));
   
     
   }
 
-  get produitRows(): FormArray {
-    return this.commandeForm.get('produitRows') as FormArray;
+  get commandeItems(): FormArray {
+    return this.commandeForm.get('commandeItems') as FormArray;
   }
 
   addNewRow(){
-   const control = <FormArray>this.commandeForm.controls['produitRows'];
+   const control = <FormArray>this.commandeForm.controls['commandeItems'];
+
    control.push(this.initItemRows());
   }
   deleteRow(index: number) {
-    const control = <FormArray>this.commandeForm.controls['produitRows'];
+    const control = <FormArray>this.commandeForm.controls['commandeItems'];
     control.removeAt(index);
 }
 
   onSelectionChange(e,i) {
     const prix=this.produits.find(element => element.id=== e.source.value);
-    this.produitRows.at(i).patchValue({prixVente:prix.prixVente});
-    this.produitRows.at(i).patchValue({qty:0});
-    this.produitRows.at(i).patchValue({nameProduit:prix.nameProduit});
+    this.commandeItems.at(i).patchValue({prixVente:prix.prixVente});
+    this.commandeItems.at(i).patchValue({quantity:0});
+    this.commandeItems.at(i).patchValue({nameProduit:prix.nameProduit});
+
   }
 
   saverange(e,i){
-   const prix= this.commandeForm.value.produitRows[i].prixVente
-    this.produitRows.at(i).patchValue({montant:e*prix});
-   let k= this.produitRows.at(i).value.montant;
+   const prix= this.commandeForm.value.commandeItems[i].prixVente
+    this.commandeItems.at(i).patchValue({montant:e*prix});
+   let k= this.commandeItems.at(i).value.montant;
    this.total+=k;
    
   }
@@ -102,8 +102,8 @@ export class AddCommandeComponent implements OnInit {
     return this._fb.group({
         //list all your form controls here, which belongs to your form array
         nameProduit: ['', [Validators.required]],
-        id_produit:['', [Validators.required]],
-        qty:['', [Validators.required]],
+        idP:['', [Validators.required]],
+        quantity:['', [Validators.required]],
         prixVente:['', [Validators.required]],
         montant:['', [Validators.required]]
 
