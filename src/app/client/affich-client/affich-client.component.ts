@@ -36,7 +36,9 @@ export class AffichClientComponent implements OnInit {
          
     });
     this.ClientServices.getClientbyid(this.data.id).subscribe((response:any) => {
-      this.clientForm.patchValue(response.user);        
+      this.clientForm.patchValue(response); 
+      console.log(response);
+             
    });
   }
   close(): void {

@@ -41,7 +41,9 @@ public displayedColumns = ['ref-client','name', 'telephone','email', 'address', 
 
    getAllOwners () {
     this.ClientServices.getClient().subscribe((response:any) => {
-       this.dataSource.data = response.user as Owner[];
+       this.dataSource.data = response as Owner[];
+       console.log("hello",response);
+       
     })
   }
   openDialog() {
@@ -98,11 +100,13 @@ openModalUpdate(id): void {
   }
 
  redirectToDelete  (id) {
+   
+   
   this.ClientServices.deleteClient(id).subscribe(
-    (msg) => {
-      console.log(msg)
+    (message) => {
+      console.log(message)
     },
-    (error) => {console.log(error)},
+    (error) => {console.log("error")},
     ()=>{this.ngOnInit()}
   );
 

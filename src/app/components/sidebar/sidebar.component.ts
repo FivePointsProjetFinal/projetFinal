@@ -15,10 +15,10 @@ export const ROUTES: RouteInfo[] = [
     { path: '/produit', title: 'Produits',  icon:'local_grocery_store', class: '' },
     { path: '/client', title: 'Clients',  icon:'directions_walk', class: '' },
     { path: '/fournisseur', title: 'Fournisseurs',  icon:'business', class:'' },
-    // { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
-    // { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
+    
      { path: '/commande', title: 'Commandes',  icon:'fact_check', class: '' },
      { path: '/facture', title: 'Factures',  icon:'business_center', class:'' },
+     { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
 ];
 
 @Component({
@@ -33,8 +33,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
-    console.log(this.menuItems);
-    
+  
   }
   admin(a){
 const c=this.authServiceService.UserAuthentificated();

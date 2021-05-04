@@ -42,6 +42,10 @@ import { ListCommandeComponent } from 'app/commande/list-commande/list-commande.
 import { AddCommandeComponent } from 'app/commande/add-commande/add-commande.component';
 import { UpdateCommandeComponent } from 'app/commande/update-commande/update-commande.component';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { AffichCommandeComponent } from 'app/commande/affich-commande/affich-commande.component';
+import { AddFactureComponent } from 'app/facture/add-facture/add-facture.component';
+import { ListFactureComponent } from 'app/facture/list-facture/list-facture.component';
+import { AffichFactureComponent } from 'app/facture/affich-facture/affich-facture.component';
 
 
 @NgModule({
@@ -91,6 +95,10 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     ListCommandeComponent,
     AddCommandeComponent,
     UpdateCommandeComponent,
+    AffichCommandeComponent,
+    AddFactureComponent,
+    ListFactureComponent,
+    AffichFactureComponent,
 
   ],
   schemas: [ NO_ERRORS_SCHEMA ],

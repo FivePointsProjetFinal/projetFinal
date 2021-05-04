@@ -10,6 +10,7 @@ import { AddCommandeComponent } from '../add-commande/add-commande.component';
 import { AffichCommandeComponent } from '../affich-commande/affich-commande.component';
 import { UpdateCommandeComponent } from '../update-commande/update-commande.component';
 
+declare var $: any;
 
 export interface commandes{
   refCommande : String,
@@ -35,7 +36,7 @@ export class ListCommandeComponent implements OnInit {
 
   ngOnInit(): void {
     this.commandeServices.getCommande().subscribe((response:any) => {
-        this.dataSource.data = response.commande as commandes[];
+        this.dataSource.data = response as commandes[];
    })
   }
 
@@ -73,12 +74,14 @@ openModalUpdate(id): void {
 
 
 
-    
+listmsg:any;
  
   valide(id){
     this.commandeServices.validation(id).subscribe(
       (msg) => {
-        console.log(msg) },
+        this.listmsg=msg;
+       this.showNotification();
+         },
       (error) =>{console.log(error)} ,
       ()=>{this.ngOnInit()}
     )
@@ -88,7 +91,9 @@ openModalUpdate(id): void {
  redirectToDelete  (id) {
   this.commandeServices.deleteCommande(id).subscribe(
     (msg) => {
-      console.log(msg) },
+      this.listmsg=msg;
+      this.showNotification();
+    },
     (error) =>{console.log(error)} ,
     ()=>{this.ngOnInit()}
   );
@@ -101,5 +106,32 @@ openModalUpdate(id): void {
   public doFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
-  
+  showNotification(){
+    const type = ['','info','success','warning','danger'];
+
+    const color = Math.floor((Math.random() * 4) + 1);
+
+    $.notify({
+        icon: "notifications",
+        message: this.listmsg.message
+
+    },{
+        type: type[color],
+        timer: 4000,
+        placement: {
+            from: 'top',
+            align: 'center'
+        },
+        template: '<div data-notify="container" class="col-xl-4 col-lg-4 col-11 col-sm-4 col-md-4 alert alert-{0} alert-with-icon" role="alert">' +
+          '<button mat-button  type="button" aria-hidden="true" class="close mat-button" data-notify="dismiss">  <i class="material-icons">close</i></button>' +
+          '<i class="material-icons" data-notify="icon">notifications</i> ' +
+          '<span data-notify="title">{1}</span> ' +
+          '<span data-notify="message">{2}</span>' +
+          '<div class="progress" data-notify="progressbar">' +
+            '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+          '</div>' +
+          '<a href="{3}" target="{4}" data-notify="url"></a>' +
+        '</div>'
+    });
+}
 }

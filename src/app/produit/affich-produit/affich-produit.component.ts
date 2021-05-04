@@ -30,9 +30,8 @@ export class AffichProduitComponent implements OnInit {
     });
 
     this.produitServices.getProduitbyid(this.data.id).subscribe((response:any) => {
-    this.ProduitForm.patchValue(response.produit);
-    console.log(response);
-    
+    this.ProduitForm.patchValue(response);
+     
    })
   }
 

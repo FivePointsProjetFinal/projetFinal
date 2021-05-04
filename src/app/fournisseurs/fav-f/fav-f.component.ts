@@ -33,7 +33,7 @@ export class FavFComponent implements OnInit {
   }
   getAllOwners () {
     this.FournisseurServices.getFavFournisseur().subscribe((response:any) => {
-      this.dataSource.data = response.fournisseur as fav[];
+      this.dataSource.data = response as fav[];
    })
 }
 favoris(id){

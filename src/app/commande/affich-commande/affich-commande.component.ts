@@ -9,7 +9,7 @@ import { CommandeSeviceService } from 'app/service/commande-sevice.service';
   styleUrls: ['./affich-commande.component.css']
 })
 export class AffichCommandeComponent implements OnInit {
-client;
+clients;
 date;
 mont_tot;
 refC;
@@ -17,26 +17,25 @@ produits: any = [];
   constructor(
     public dialogRef :MatDialogRef<AffichCommandeComponent >,
     private CommandeServices: CommandeSeviceService,
-    private ClientServices: ClientServiceService,
+  
    @Inject(MAT_DIALOG_DATA)public data: any ){ };
 
   ngOnInit(): void {
     this.CommandeServices.getCommandebyid(this.data.id).subscribe((response:any) => {
-      console.log(response);
-      
-      response.commande.produitRows.forEach(element => {
+  
+      this.clients=response.client;
+     
+      response.commandeItems.forEach(element => {
+console.log(element);
+
         this.produits.push(element)
       });
-      console.log(this.produits);
-this.date=response.commande.date_commande;
-this.mont_tot=response.commande.montant_total;
-this.refC=response.commande.refCommande;
+      
+this.date=response.date_commande;
+this.mont_tot=response.montant_total;
+this.refC=response.refCommande;
 
 
-
-      this.ClientServices.getClientbyid(response.commande.idClient).subscribe((resp:any) => {
-      this.client=resp.user
-      })
   })
   }
   printComponent(cmpName) {

@@ -75,7 +75,9 @@ ngOnInit(): void {
 
  getAllOwners () {
   this.FournisseurServices.getFournisseur().subscribe((response:any) => {
-     this.dataSource.data = response.fournisseur as Owner[];
+     this.dataSource.data = response as Owner[];
+     console.log(response);
+     
   })
   
 }

@@ -3,7 +3,6 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { ClientServiceService } from 'app/service/client-service.service';
 import { CommandeSeviceService } from 'app/service/commande-sevice.service';
 import { ProduitServiceService } from 'app/service/produit-service.service';
-import { umask } from 'process';
 
 @Pipe({
   name: 'stringFilterBy'
@@ -19,7 +18,7 @@ export class AddCommandeComponent implements OnInit {
   clients: Array<any>;
   commandeForm: FormGroup;
   commande;
-
+  submited:boolean=false;
   total:number=0;
   constructor(private _fb: FormBuilder,private produitServices: ProduitServiceService ,
     private ref: ChangeDetectorRef,  private ClientServices: ClientServiceService,
@@ -28,94 +27,85 @@ export class AddCommandeComponent implements OnInit {
   }
 
   ngOnInit(){
-    // this.commande= new FormGroup({
-     
-    // });
     this.commandeForm = this._fb.group({
-      produitRows: this._fb.array([this.initItemRows()]) ,
+      commandeItems: this._fb.array([this.initItemRows()]) ,
       refCommande : new FormControl('', [Validators.required]),
-      idClient: new FormControl(),
+      idClient: new FormControl('', [Validators.required]),
       montant_total:new FormControl(),
       date_commande:new FormControl(Date.now()),
       valide:new FormControl(false)
     });
     this.produitServices.getProduit().subscribe((response:any) => {
-      this.produits= response.produit ;
+      this.produits= response ;
    })  
 
    this.ClientServices.getClient().subscribe((response: any) => {
-    this.clients = response.user;
+    this.clients = response;
   })
    this.ref.detectChanges();
  
   
   }
   save(){
-   this.commandeForm.patchValue({'montant_total':this.total})
-   
-    console.log(this.commandeForm.value);
-
-    // this.submited = true;
+  
+    this.submited=true;
     if (this.commandeForm.invalid) {
       return;
     }
-    this.CommandeServices.addCommande(this.commandeForm.value);
+    
+    console.log(this.commandeForm.value);
+     this.CommandeServices.addCommande(this.commandeForm.value);
   }
   
 
  
   createForm(){
     this.commandeForm = this._fb.group({
-      produitRows: this._fb.array([])
+      commandeItems: this._fb.array([])
     });
-    this.commandeForm.setControl('produitRows', this._fb.array([]));
+    this.commandeForm.setControl('commandeItems', this._fb.array([]));
   
     
   }
 
-  get produitRows(): FormArray {
-    return this.commandeForm.get('produitRows') as FormArray;
+  get commandeItems(): FormArray {
+    return this.commandeForm.get('commandeItems') as FormArray;
   }
 
   addNewRow(){
-   const control = <FormArray>this.commandeForm.controls['produitRows'];
+   const control = <FormArray>this.commandeForm.controls['commandeItems'];
+
    control.push(this.initItemRows());
   }
   deleteRow(index: number) {
-    const control = <FormArray>this.commandeForm.controls['produitRows'];
+    const control = <FormArray>this.commandeForm.controls['commandeItems'];
     control.removeAt(index);
 }
 
   onSelectionChange(e,i) {
-    const prix=this.produits.find(element => element._id=== e.source.value);
-    this.produitRows.at(i).patchValue({prixVente:prix.prixVente});
-    this.produitRows.at(i).patchValue({qty:0});
-    this.produitRows.at(i).patchValue({nameProduit:prix.nameProduit});
+    const prix=this.produits.find(element => element.id=== e.source.value);
+    this.commandeItems.at(i).patchValue({prixVente:prix.prixVente});
+    this.commandeItems.at(i).patchValue({quantity:0});
+    this.commandeItems.at(i).patchValue({nameProduit:prix.nameProduit});
+
   }
 
   saverange(e,i){
-   const prix= this.commandeForm.value.produitRows[i].prixVente
-    this.produitRows.at(i).patchValue({montant:e*prix});
-
-   this.total+=e*prix
+   const prix= this.commandeForm.value.commandeItems[i].prixVente
+    this.commandeItems.at(i).patchValue({montant:e*prix});
+   let k= this.commandeItems.at(i).value.montant;
+   this.total+=k;
    
-  //   this.produitRows.controls.forEach((control) => {
-  //     control.valueChanges.subscribe(() =>{
-  //     const   sum=parseInt(control.value['montant']);
-  //        this.total+=sum;   
-  //     })
-   
-  // })
   }
 
   initItemRows() {
     return this._fb.group({
         //list all your form controls here, which belongs to your form array
-        nameProduit: [''],
-        id_produit:[''],
-        qty:[''],
-        prixVente:[''],
-        montant:['']
+        nameProduit: ['', [Validators.required]],
+        idP:['', [Validators.required]],
+        quantity:['', [Validators.required]],
+        prixVente:['', [Validators.required]],
+        montant:['', [Validators.required]]
 
     });
 }

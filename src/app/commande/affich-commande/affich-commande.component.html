@@ -8,14 +8,14 @@
                             <address>
                                 <strong>Client :</strong>
                                 <br>
-                                {{client.nameClient}}
+                                {{clients.nameClient}}
                                 <br>
-                                {{client.adresseClient}}
+                                {{clients.adresseClient}}
                                 <br>
         
-                                {{client.emailClient}}
+                                {{clients.emailClient}}
                                 <br>
-                                <abbr title="Phone">P:</abbr> (216) {{client.telpClient}}
+                                <abbr title="Phone">P:</abbr> (216) {{clients.telpClient}}
                             </address>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 text-right">
@@ -45,10 +45,10 @@
                                 
                                 
                                 <tr *ngFor = "let produit of produits">
-                                    <td class="col-md-9"><em>{{produit.nameProduit}}</em></td>
-                                    <td class="col-md-1" style="text-align: center">{{ produit.qty}} </td>
-                                    <td class="col-md-1 text-center">{{produit.prixVente}}</td>
-                                    <td class="col-md-1 text-center">{{produit.montant}}</td>
+                                    <td class="col-md-9"><em>{{produit.produit.nameProduit}}</em></td>
+                                    <td class="col-md-1" style="text-align: center">{{ produit.quantity}} </td>
+                                    <td class="col-md-1 text-center">{{produit.produit.prixVente}}</td>
+                                    <td class="col-md-1 text-center">{{produit.price}}</td>
                                 </tr>
                                 <tr>
                                     <td>   </td>

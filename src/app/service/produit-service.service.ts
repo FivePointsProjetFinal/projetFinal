@@ -20,7 +20,7 @@ export class ProduitServiceService {
     );
   }
   getProduit() {
-    const produit = this.httpClient.get(this.baseUrl + 'produits/allProduit');
+    const produit = this.httpClient.get(this.baseUrl + 'produits/allProduits');
     return produit;
   }
 
@@ -28,14 +28,13 @@ export class ProduitServiceService {
    return this.httpClient.delete(this.baseUrl + 'produits/deletProduit/' + id)
   }
   getProduitbyid(id) {
-    const user = this.httpClient.get(this.baseUrl + 'produits/getProduitById/' + id);
+    const user = this.httpClient.get(this.baseUrl + 'produits/getProduitById/'+ id);
     return user;
   }
   updateProduit(id, client) {
     this.httpClient.put(this.baseUrl + 'produits/updateUser/' + id, client).subscribe(
       (msg) => {
-        console.log(msg),
-          location.reload()
+     
       },
       (error) => console.log(error)
     );
@@ -45,22 +44,25 @@ export class ProduitServiceService {
    return this.httpClient.post<any>(this.baseUrl + 'categorie/addCategorie', cat)
   }
   getCategorie() {
-    const cat = this.httpClient.get(this.baseUrl + 'categorie/allCategorie');
+    const cat = this.httpClient.get(this.baseUrl + 'categorie/allCategories');
     return cat;
   }
   updateCategorie(id, cat) {
   return  this.httpClient.put(this.baseUrl + 'categorie/updateCategorie/' + id, cat)
   }
   getCatbyid(id) {
-    const cat = this.httpClient.get(this.baseUrl + 'categorie/getCatById/' + id);
+    const cat = this.httpClient.get(this.baseUrl + 'categorie/getCategorieById/' + id);
     return cat;
   }
   deleteCat(id) {
-    return this.httpClient.delete(this.baseUrl + 'categorie/deletCat/' + id)
+    return this.httpClient.delete(this.baseUrl + 'categorie/deletCategorie/' + id)
   }
   /******************************************** */
   addPack(cat) {
+    console.log(cat);
+    
   return  this.httpClient.post<any>(this.baseUrl + 'packs/addPack', cat)
+
   }
   getPack() {
     const cat = this.httpClient.get(this.baseUrl + 'packs/allPack');

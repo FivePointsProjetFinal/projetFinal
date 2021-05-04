@@ -72,7 +72,7 @@ openModalUpdate(id): void {
 
    getAllOwners () {
     this.produitServices.getProduit().subscribe((response:any) => {
-       this.dataSource.data = response.produit as Owner[];
+       this.dataSource.data = response as Owner[];
     })
     
   }

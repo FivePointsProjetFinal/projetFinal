@@ -44,7 +44,7 @@ export class CategorieComponent implements OnInit {
 
 
     this.produitServices.getCategorie().subscribe((response:any) => {     
-      this.dataSource.data = response.cat as Owner[];
+      this.dataSource.data = response as Owner[];
    })
   }
 
@@ -68,7 +68,7 @@ export class CategorieComponent implements OnInit {
     this.showAddButton=false;
     this.accordion.openAll();
     this.produitServices.getCatbyid(i).subscribe((response:any) => {
-    this.CategorieForm.patchValue(response.cat);        
+    this.CategorieForm.patchValue(response);        
    });
 
   }

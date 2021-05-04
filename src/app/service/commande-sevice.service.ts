@@ -40,7 +40,7 @@ export class CommandeSeviceService {
     );
   }
   validation(id){
-   return this.httpClient.put(this.baseUrl+'commandes/valideCommabde/'+id,"")
+   return this.httpClient.put(this.baseUrl+'commandes/updateQte/'+id,"")
   }
 
 }

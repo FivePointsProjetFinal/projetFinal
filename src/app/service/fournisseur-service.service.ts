@@ -30,19 +30,20 @@ export class FournisseurServiceService {
     return user;
   }
   updateFournisseur(id,Fournisseur){
+    console.log(Fournisseur);
+    
     this.httpClient.put(this.baseUrl+'fournisseurs/updateFournisseur/'+id,Fournisseur).subscribe(
       (msg) => {
-        console.log(msg),
-        location.reload()
+        console.log(msg)
       },
       (error) => console.log(error)
     );
   }
   favoris(id){
-   return this.httpClient.put(this.baseUrl+'fournisseurs/updateFavF/'+id,"");
+   return this.httpClient.put(this.baseUrl+'fournisseurs/updateFav/'+id,"");
   }
   getFavFournisseur(){
-    const fournisseur= this.httpClient.get(this.baseUrl+'fournisseurs/getFavoritF');
+    const fournisseur= this.httpClient.get(this.baseUrl+'fournisseurs/getFavoritFournisseur');
     return fournisseur;
   }
 }

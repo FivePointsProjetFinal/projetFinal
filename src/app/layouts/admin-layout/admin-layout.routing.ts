@@ -17,6 +17,8 @@ import { AddCommandeComponent } from 'app/commande/add-commande/add-commande.com
 import { AffichCommandeComponent } from 'app/commande/affich-commande/affich-commande.component';
 import { AuthServiceService } from 'app/service/auth-service.service';
 import { AuthGuard } from 'app/auth.guard';
+import { AffichFactureComponent } from 'app/facture/affich-facture/affich-facture.component';
+import { ListFactureComponent } from 'app/facture/list-facture/list-facture.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -82,10 +84,11 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'commande',  component: AddCommandeComponent },
     { path: 'fournisseur',  component: ListFComponent },
     { path: 'produit',  component: ListProduitComponent },
+    { path: 'facture',  component: ListFactureComponent },
     {
        path: 'user', 
      component: AddUserComponent,
-     canActivateChild: [AuthGuard]
+    //  canActivateChild: [AuthGuard]
      },
     
 ];

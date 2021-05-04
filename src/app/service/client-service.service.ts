@@ -17,7 +17,6 @@ export class ClientServiceService {
     return user;
   }
   deleteClient(id){
-
   return  this.httpClient.delete(this.baseUrl+'clients/deletClient/'+id)
   }
   getClientbyid(id){
